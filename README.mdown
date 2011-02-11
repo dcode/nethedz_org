@@ -3,5 +3,16 @@ About
 
 This is the code for my [personal website][home].
 
+Instructions
+------------------
+
+These simple steps will get this code running locally:
+
+#!/bin/bash
+$ mkvirtualenv --distribute --no-site-packages nethedz_org
+$ pip install -r requirements
+$ fab generate
+$ fab serve
+
 
 [home]: http://nethedz.org
