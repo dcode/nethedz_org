@@ -1,0 +1,34 @@
+{% extends "_post.html" %}
+
+{% hyde
+    title: "django-hoptoad"
+    snip: "Now ponies can ride the toad too."
+    created: 2009-07-25 01:16:40
+%}
+
+{% block article %}
+
+django-hoptoad is some simple Middleware for letting [Django][]-driven
+websites report their errors to [Hoptoad][]. Now [ponies][] can ride the toad
+too.
+
+You can get it from [the repository on BitBucket][repo].
+
+Check out the [documentation][docs] to find out how to use it.
+
+[Django]: {{links.django}}
+[Hoptoad]: http://hoptoadapp.com/
+[ponies]: http://djangopony.com/
+[repo]: http://bitbucket.org/sjl/django-hoptoad/
+[docs]: http://sjl.bitbucket.org/django-hoptoad/
+
+Suggestions
+-----------
+
+This Middleware is a work in progress. If you have a suggestion or find a bug
+please [add an issue][issues] or find me on [Twitter][twsl] and let me know.
+
+[issues]: http://bitbucket.org/sjl/django-hoptoad/issues/?status=new&status=open
+[twsl]: {{links.twsl}}
+
+{% endblock %}

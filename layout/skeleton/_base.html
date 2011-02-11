@@ -1,0 +1,109 @@
+{% extends "skeleton/_root.html" %}
+{% block all %}
+<!DOCTYPE html >    
+<!-- Paul Irish's technique for targeting IE, modified to only target IE6, applied to the html element instead of body -->
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if (gt IE 6)|!(IE)]><!--><html lang="en" class="no-js"><!--<![endif]-->
+	<head>
+	    {% block meta %}
+	    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	    <meta name="author" content="Derek Ditch" />
+	    
+	    {% block extra_meta %}{% endblock %}
+        {% endblock %}
+	    
+		<title>{% block title %}{% endblock %}</title>
+		
+        <!-- OpenID Support -->
+        <link rel="openid2.provider" href="https://www.google.com/accounts/o8/ud?source=profiles">
+        <link rel="openid2.local_id" href="http://www.google.com/profiles/derek.ditch">
+        
+		{% block feeds %}
+        <link href="http://feeds2.feedburner.com/derek.ditch" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
+        {% endblock %}
+
+		{% block css %}
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo:regular">
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Sans:regular,bold">
+
+		<link rel="stylesheet" type="text/css" href="/media/css/style.css?1.0" />
+        <link rel="stylesheet" href="/media/css/print.css?1.0"    type="text/css" media="print" />
+        
+        {% block extra_css %}{% endblock %}
+        {% endblock %}
+
+        <!-- Modernizr for feature detection of CSS3 and HTML5; must be placed in the "head" -->
+        <!-- Script tag no longer needs type attribute -->
+        <script src="/media/js/modernizr-1.6.min.js"></script>
+	</head>
+	<body class="">
+		<div class="skipto"> 
+            <a href="#content">Skip to content</a> <span class="slash">/</span> 
+            <a href="#blog_sidebar">Skip to content navigation</a> 
+        </div>
+        
+        <!-- Main nav, styled by targeting "#hd1 nav"; you can have more than one nav element per page -->
+	    <header role="banner" id="hd1">    
+	        <div id="banner">           
+		        <hgroup>
+			        <h1><a href="/" title="" rel="home">Derek Ditch</a></h1> 
+			        <h2>CODER // RUNNER // LOVER // SUPERHERO</h2>
+		        </hgroup>
+		    </div>
+			
+		    <nav><!-- top nav -->
+		        <div>
+		            <ul> 
+						<li><a href="/">Home</a></li> 
+						<li><a href="/blog/">Blog</a></li> 
+			            <li><a href="/about/">About</a> 
+		            </ul> 
+	            </div>
+	        </nav><!-- end of top nav --> 
+	    </header>
+	    
+	    <div id="content">
+	    <!-- Content -->
+	        <div id="mainContent">
+			{% with page.node.ancestors|last as parent_node %}
+                {% with parent_node.url as parent_url %}
+                    {% block content %}{% endblock %}
+                {% endwith %}
+            {% endwith %}
+	        </div><!-- #main -->
+                 
+			<aside id="sidebar">
+				{% include "skeleton/_sidebar.html" %}
+            </aside>
+        </div><!-- #content -->
+		<footer id="ft1">
+		<div>
+			{% include "skeleton/_footer.html" %}
+		</div>
+		</footer><!-- #footer -->
+
+		{% block js %}       
+		<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+        <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+        <script src="/media/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/media/js/site.js" type="text/javascript"></script>
+        <script src="/media/js/print.js" type="text/javascript"></script>
+
+        <script type="text/javascript"><!-- Google Analytics -->
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-7697674-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        
+        {% block extra_js %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>
+{% endblock %}

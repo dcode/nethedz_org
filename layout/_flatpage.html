@@ -1,0 +1,18 @@
+{% extends "skeleton/_base.html" %}
+
+{% block title %} NetHedz | {{ page.title|safe|typogrify }}{% endblock %}
+
+{% block content %}
+    <section>
+        <header>
+            <h1>{{ page.title|safe|typogrify }}</h1>
+        </header>
+		<div>
+            {% filter typogrify %}
+                {% markdown toc def_list %}
+                    {% block article %}{% endblock %}
+                {% endmarkdown %}
+            {% endfilter %}
+        </div>
+    </section>
+{% endblock %}

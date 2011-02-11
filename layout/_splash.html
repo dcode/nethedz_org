@@ -1,0 +1,21 @@
+
+{% extends "skeleton/_base.html" %}
+
+{% block title %} NetHedz | Splash {% endblock %}
+{% block content %}
+    <div class="splash">
+        {% filter typogrify %}
+            <p>Hello, I'm Derek.</p>
+
+            <p>
+                I'm a programmer, student, father, <span class="amp">&amp;</span>
+                Soldier from Columbia,&nbsp;Missouri.
+            </p>
+
+            <p>
+                If you want to get in touch with me,
+                <a href="mailto:derek.ditch@gmail.com">email</a> is best.
+            </p>
+        {% endfilter %}
+    </div>
+{% endblock %}

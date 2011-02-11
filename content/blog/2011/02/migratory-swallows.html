@@ -1,0 +1,121 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Migratory Swallows"
+    snip: "Jumping off the Ubuntu ship."
+    created: 2011-02-02 19:48:00
+%}
+
+{% block article %}
+
+I've been flying under the Internet radar for some time. A lot has happened
+since the last time that I was actively blogging. That was back in...oh... 
+2005 was the peak, I guess. At the time, my blog was hosted on Wordpress 1.5
+over on derek.ditch.name. You can still see some remants of it over at the
+Wayback Machine.
+
+But I digress...
+
+*This* post is about my migration to [Fedora][]. I have long since avoided 
+all RPM-based distros due primarily to RPM dependency-hell. Well, 
+Fedora/Redhat has actually implemented a package manager these days, 
+called `yum`. Yum has pretty much eliminated this issue. I determined it 
+was worth taking a looksee.
+
+[Fedora]: http://fedoraproject.org/
+
+[TOC]
+
+My History with Ubuntu
+-----------------------
+
+Ubuntu and I go way back..pretty much to the beginning. I started using
+[Ubuntu][] in the Warty Warthog release (4.10). I requested a hard copy disk
+of the installation to play with.
+
+Really, our relationship goes back even further. I started messing 
+seriously with Linux as my primary operating system in 2000 with 
+[Debian][] 2.2. I could barely get [X][] to run on my laptop at the time, 
+but by God, I was running Linux.
+
+[Ubuntu]: http://www.ubuntu.com
+[Debian]: http://debian.org
+[X]: http://www.xfree86.org
+
+Time to Move On
+------------------------
+
+The beginning of the turning point for me, was likely the release of KDE 4.
+I *like* [Qt][]. This is likely a result of my being a C++ developer. I say
+C++, but really I develop in many languages. C++ is just the language that
+I was taught at [school][]. It is also the primary language that is used in
+the research projects that I participate in. I attempted to learn Qt back
+in the Qt 3 days, but I was horrified. It was basically just a bunch of
+hacks. One could argue that Qt 4 is no different, but actual C++ code is
+used for much of the interaction instead of the solely macro-based
+signal-slot mechanism. That's a long way to get around that, I liked KDE4
+when it was released.
+
+The problem with this affinity, is that [Kubuntu][], the KDE brother to
+Ubuntu is a second-class citizen. For most Ubuntu releases, I would install
+the Gnome version and then the KDE version. The KDE version was always less
+polished and things just plain wouldn't work. On my Thinkpad, for instance,
+the media keys would work very nicely in Gnome, but in KDE they wouldn't
+work at all and required significant work to get them working in the same
+ballpark as Gnome.
+
+Now, some of this was due to the immaturity of KDE at the time. But a lot
+wasn't. I usually just accepted this, but it had a bad taste in my mouth.
+
+[Qt]: http://qt.nokia.com
+[school]: http://www.mst.edu "Missouri University of Science and Technology"
+[Kubuntu]: http://www.kubuntu.org
+
+A New Hope
+------------------------
+
+Recently, I've been doing a lot of security work, mostly in the Information
+Assurance realm. A great resource for hardening operating systems (and
+other software/hardware) are the [Security Guides] published by the
+NSA. Now for Linux, the only guide they have is for RedHat Enterprise Linux
+5. The reason they support RedHat are obvious:
+
+ * RedHat has been around as an enterprise platform for a long time.
+ * Official development platform of NSA SELinux
+ * The platform aims to be somewhat hardened out of the box.
+
+The last point is my perception and not necessarily statement of fact.
+Since I am merely a student and not looking to pay for enterprise-grade
+support, I took a look at the Fedora Project, RedHat's bleeding edge,
+community-driven playground. I liked that Fedora had SELinux policies for
+just about everything and has that same security-hardened focus of RHEL. 
+
+I first downloaded the KDE variant and installed it. I was quite pleased at
+its level of polish. Then, just to see what I was missing out on (if
+anything), I installed the Gnome variant, which is the official *spin* of
+Fedora. Surprisingly, it was about the same level of as the KDE spin. After
+digging into more documentation, I found future plans for Gnome 3.
+
+Then I started reading about Gnome 3 and the sweet Gnome Shell. I liked
+what I saw. I found that the Gnome Shell was packaged in the Fedora yum
+repositories and installed it. For a desktop, it's quite slick indeed. I
+think there's some room for improvement, but it's a very usable, modern
+desktop with the same level of maturity and integration of Gnome 2. The
+pleasantness of Gnome is just that: the maturity. This is probably due to
+the fact that enterprise-grade companies have adopted Gnome as the official
+platform and added to it in terms of accessibility and human interface
+guidelines.
+
+[Security Guides]: http://www.nsa.gov/ia/guidance/security_configuration_guides/operating_systems.shtml#linux2 "NSA Security Guides"
+*[NSA]: National Security Agency
+*[RHEL]: RedHat Enterprise Linux
+
+Wrap it Up
+------------
+So...this was all a long way to get around to my logic for looking at
+Fedora and being pleased with what I found. After some tweaking, I made yum
+not suck so much. Mainly, I turned on caching so that I didn't have to
+download a new index *every **damn** time* that I want to query the package
+manager.
+
+{% endblock %}

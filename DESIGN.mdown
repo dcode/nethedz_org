@@ -1,0 +1,13 @@
+Some notes on the design, mostly for myself.
+
+Images
+======
+
+Full images for posts should be 580 pixels wide (or less) and a multiple of 25
+pixels tall.
+
+Headers
+=======
+
+Blog and project content block should use h2 and lower. h1 elements are
+reserved for the layout.

@@ -1,0 +1,59 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Back to the Basics"
+    snip: "Kicking it Old School"
+    created: 2011-02-07 20:21:00
+    related: True
+%}
+
+{% block article %}
+
+I rewrote this site, as I have been doing regularly for the past 5 or 6 years
+on the interval of about 9 months. I read some pretty convincing arguments
+for static site generation. I don't know where, exactly, but I read somewhere
+about [Hyde][], a static site generator. 
+
+This entry aims to give a brief overview for my decision.
+
+[Hyde]: https://github.com/lakshmivyas/hyde/
+
+[TOC]
+
+The Recurring Problem
+-----------------------
+
+While I don't always follow this mantra, it's generally a good idea to not
+fix a problem that doesn't exist. This has led me to the triquarterly redesign
+of my site to try the latest, greatest framework.
+
+I started out my blogging days using Wordpress....nay...it goes back further
+than that. My friend [Julian][] and I had an old Geocities site under our
+psuedonyms Kalvyn and Hobbbz. And this was well before they had the cute little
+inline WSYWYG editor. There was a textbox that loaded the HTML (3) for your
+page where you could edit it, unassisted. They would then use [SSI][] to 
+insert ads into your page.
+
+So, the next way forward was using Wordpress. I enjoyed hacking on the
+internals, too. I helped port Wordpress 1.5 into [WPMU], the multi-user
+edition which has been incorporated into the mainline Wordpress and runs
+[Wordpress.com][].
+
+I then drifted away from PHP and picked up Python. I started hacking on
+Python CGI-based sites then picked up [Django][]. The problem with Django,
+was that it was all roll-your-own. The problem being that I spent all my time
+hacking on my website rather than writing anything.
+
+The Crux
+--------------
+
+Herein, lies the problem. I want a website that doesn't get in my way. Another
+problem is that my data gets locked away in these databases.
+
+[Julian]: http://juliankussman.com/
+[SSI]: http://en.wikipedia.org/wiki/Server_Side_Includes
+[WPMU]: http://ocaoimh.ie/new-wpmu-snapshot/
+[Wordpress.com]: http://www.wordpress.com/
+[Django][http://djangoproject.org/
+
+{% endblock %}
