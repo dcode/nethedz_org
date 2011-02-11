@@ -1,0 +1,7 @@
+About
+-----------------
+
+This is the code for my [personal website][home].
+
+
+[home]: http://nethedz.org
