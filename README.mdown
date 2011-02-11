@@ -8,6 +8,8 @@ Instructions
 
 These simple steps will get this code running locally:
 
+	$ git clone git://github.com/dcode/nethedz_org.git
+	$ cd nethedz_org/
 	$ mkvirtualenv --distribute --no-site-packages nethedz_org
 	$ pip install -r requirements
 	$ fab generate
