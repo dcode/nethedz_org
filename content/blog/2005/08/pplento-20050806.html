@@ -1,0 +1,66 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "PPlento 20050806"
+    created: 2005-08-10 00:50:00
+    snip: ""
+    no_comments: True
+%}
+
+{% block article %}
+Today, I finally semi-sucessfully completed a build of a PPC LiveCD using
+Gentoo’s Catalyst tool. Catalyst is a bear to get used to. It took me about 3
+days to finally get this cd to boot. It’s just a rather steep learning curve and
+confusing documentation. I submitted a bug as a request to fix it.
+
+See the good stuff! Skip the good stuff
+
+I said semi-sucessfully, because it’s not perfect by any means. It uses the
+current toolchain for PPC (GCC-3.4.4, binutils-2.15.90, glibc-2.3.4). It also
+has distcc on the disc, ready to use. As an added bonus, distcc has been patched
+with support for ZeroConf Networking. That means, that when configured
+correctly, distccd will tell Howl that it will provide service to the local
+subnet. Any other distcc that is patched will automatically discover that host
+and add it to the host list.
+
+There are some caveats. Like I said….semi-sucessfully. Currently, these are the
+steps you must take before trying to compile anything.
+
+Boot the cd (Duh!)
+Configure DISTCC_HOSTS example : 
+export DISTCC_HOSTS = "+zeroconf"
+Configure distccd: You must edit /etc/conf.d/distccd and add “–zeroconf” to
+DISTCCD_OPTS.
+Optionally edit /etc/init.d/distccd. Add the line 'need mDNSResponder' to the
+depend() function.
+If you edited distccd init script, just , else start mDNSResponder first, then
+distccd.
+Setup other hosts.
+Compile!
+I use this on spare G4 processors in my apartment. On my laptop, which is where
+I do my main compiling, I have patched distcc and use it with Portage. You can
+find the patch here with some minimal documentation. Let me know how this works
+for you.
+
+This works on my G4 15″ Alum. PowerBook and my 1st gen Mac Mini. Your mileage
+may vary. There is no warranty…I mean..it’s free, what more do you want? It may
+work on G3 processors. It may make them explode into bits. I don’t know. I have
+no G3 systems to test it on. It likely won’t work on G5’s. If it does, then it
+certainly isn’t optimized for them.
+
+Things for me to do (I gladly accept help  ): - Add more toolchains,
+specifically a GCC-4.x toolchain, some x86 toolchains. - Add more platform
+support. I’d like to be able to boot my Athlons and compile for my powerbook
+with them. Also, I’ve seen a toolchain on the Inet for compiling for OS X. -
+Modify the source to include the platform in the Zeroconf TXT record or service
+advertisement.
+
+Download You can download the ISO here. Please take it easy though, it’s 75.9 MB
+file. Please distribute it on P2P networks if you find this useful.
+
+In case you were wondering about the name: I needed to name it something,
+because diskimage.iso wasn’t working out too well. Since I was going to use this
+on my P-P-P-Powerbook, I though the extra ‘P’ would be nice. The ‘entoo’ came
+from Gentoo, obviously. Together, they kinda sound like ‘plenty’, which
+describes on the amount of CPU cylces you’ll have once you get this running! 
+{% endblock %}

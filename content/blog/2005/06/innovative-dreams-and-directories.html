@@ -1,0 +1,66 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Innovative Dreams and Directories"
+    snip: "My Co-discovery of Microformats"
+    created: 2005-06-16 19:33:00
+%}
+
+
+{% block article %}
+I’ve been doing some programming lately, and as such I’ve been thinking
+creatively and programmatically. Today, I picked up the yellow pages to look for
+a business. I got so frustrated, I just went online to Sprint Yellow Pages and
+searched for what I was looking for and it gave me several categories. Big deal,
+right? Wouldn’t it be nice if you could just do this with everyone and
+everything? Now I don’t mean *EVERYTHING*, but it would be nice to have a way to
+lookup a business’s information, including phone number, address, web
+page….whatever else. As it turns out, they have a standard for this already.
+They’re called vCards.
+
+vCards hold all kinds of important information. Beyond what I listed above, they
+contain contact e-mail, security keys (for e-mail encryption and digital
+signatures), …some…other…things….and it’s extensable too. For instance,
+businesses could add an extra field for store hours. How nice would that be?
+*VERY*.
+
+So here’s my idea. Embed vCards into webpages, similar to favicons and RSS Feeds
+using a `<link>` tag similar to the following:
+
+  <link rel=’alternate’ href=’/index.rss’ type=’application/rss+xml’> 
+  <link rel=’shortcut icon’ href=’/favicon.ico’ type=’image/x-icon’> 
+
+I propose using a tag such as:
+
+  <link rel=’vCard’ href=’/vcard.vcf’ type=’text/directory’>
+
+or even better would to just to embed the vCard into XHTML using an XML
+namespace using RDF as explained by W3C, right here.
+
+The benefits of this are obvious. Search engines like Google and Yahoo! could
+index this data providing an easy to use directory. Back in the day….waaaaay
+back in the day, websites used to be registered in a directory much like a phone
+book. Each year a copy of this would be published and distributed. Then DNS
+fixed that problem because you didn’t need to lookup the IP address of the
+webpages you wanted to visit anymore. I find phone numbers rather archaic,
+myself. Maybe once IPv6 and VoIP take off, instead of phone numbers, we’ll use
+IP addresses to make voice calls. Which would be wonderful, with the exception
+of DNS is kinda archaic in itself. Still a great standard, I won’t argue. I just
+don’t think it’s up to the task of maintaining directory info for websites,
+phone numbers (IPs), e-mails, and all that other crap. That’s where, of course,
+you could use a vCard to just dial a name, the application or phone would lookup
+the name in the vCard, then dial. You never see the IP address and you never
+need to.
+
+There are obvious abuses of this too, I think. For example, this would be a
+rather easy way to harvest spam addresses, both e-mail and fax. I can’t think of
+any obvious ways to prevent that right now though. Although, GPG/PGP keyservers
+contain a large database of e-mail addresses and public keys. These don’t appear
+to be targets for spam harvesters, however. Perhaps a database for vCards could
+be maintained somewhere similarly. I don’t have all the answers, just a dream of
+a unified model of information flow. Especially regarding directory lookups,
+because I hate the phone book. You never know what word they list something
+under.
+
+Peace.
+{% endblock %}
