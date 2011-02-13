@@ -10,6 +10,7 @@ DEPLOY_PATH = os.path.join(ROOT_PATH, 'deploy')
 def clean():
     local('rm -rf ./deploy')
     local('find . -name "*.pyc" -delete')
+    local('rm site.log')
 
 def generate():
     local('hyde -g -s .')

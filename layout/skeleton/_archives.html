@@ -1,0 +1,60 @@
+{% extends "skeleton/_base.html"%}
+
+{%hyde
+    listing: true
+    %}
+
+{% block content %}
+<div id="archives" class="section-listing">
+    {% for post in posts %}
+    {% ifchanged post.created.year %}
+        {% if not forloop.first %}
+    </ol>
+        {% endif %}
+
+    <h1 class="section">{{post.created|date:"Y"}}</h1>
+    <ol class="group">
+        {% endifchanged %}
+
+        {% with page as node %}
+        {% include "skeleton/_innerlisting.html" %}
+
+        {% endwith %}
+    <!--
+    <li class="entry">
+
+
+        <div><span class="postdate">{{post.created|date:"j/m"|title}}</span></div>
+        <div><a href="{{post.url}}">
+                {% with post.name_without_extension|remove_date_prefix|unslugify as default_title %}
+                {% filter typogrify %}
+                {{post.title|default_if_none:default_title }}
+                {% endfilter %}
+                {%endwith%}</a></div>
+        -->
+		</li>
+
+        {% if forloop.last %}
+    </ol>
+        {% endif %}
+
+
+        {% endfor %}
+
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+<section>
+    <header>
+    <h3>Categories</h3>
+    </header>
+    <ul>
+    {% for category in categories|dictsort:"name" %}
+    <li><p><a href="{{category.archive_url}}">{{category.name}}</a></p></li>
+    {% endfor %}
+    </ul>
+</section>
+{% endblock %}
+

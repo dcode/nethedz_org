@@ -9,61 +9,70 @@
 
 {% block article %}
 
-For a long time I used [Squarespace][] to create and host my personal website.
-It's a great service, and I highly recommend it to anyone that needs a simple,
-easy, beautiful site.
-
-Recently, however, I've started learning more and more about web design and I
-decided to completely revamp my website and build it myself from the ground
-up. This is the result.
+Background on this site can be found in my [blog post][post] about it. This
+page will just detail the technical aspects of the code.
 
 Design
 ------
 
-I like simplicity. In all areas of my life (music, dancing, photography,
-programming, design, etc) I'm striving to make everything I do as simple,
-clean, and elegant as possible. That's why I went with such a minimal design
-for the site.
+When developing past blogs, I tended to find a freely licensed template and
+customize it to my needs. I generally have two focus points in design of
+any code (in this order, usually):
 
-I haven't used any graphics in the layout for a few reasons. First, I'm not
-very good at making them. Second, I want the site to load quickly, even on
-phones, and scale gracefully for accessibility. Third, I wanted the interface
-to be as uncluttered as possible so the content of the site would be front and
-center.
+ - Standards compliant (bleeding edge, yet accessible)
+ - Asthetics and usability
+ 
+I started writing the markup and style for this site after reading a few
+pages on HTML5 and CSS3. I also looked through existing code for websites
+already running Hyde (including [Steve Losh][sjl]'s). And finally, I came
+back to an existing static site that I wrote for my [university page][dpdm85].
 
-I also stuck to a minimum of color. The only items that have any color on the
-site are any photographs that I post and the links. I did this because I'm not
-a graphic designer and so I haven't studied color enough to know how to use it
-well.
+On that page, I created the banner image using a picture that I had taken 
+of [Stone Henge][] and some stock photography of some clover. The relationship
+of this is that my university has a *HUGE* St. Patrick's Day celebration,
+due to our focus of engineering. The subtle link there is that St. Patrick
+is the Patron Saint of Engineers.
 
-One last thing I tried to keep in mind was sticking to a baseline rhythm for
-some elements of the site. The home page, blog entry list, and project list
-all line up with the links in the right sidebar. I think it gives the layout a
-more stable feel.
+So the end result, is that I wanted an HTML5 compliant website that included
+the banner image, with plenty of green (my favorite color). I used a color
+palatte generator to extract some colors from the image and went with that.
+
+I need to clean up the CSS and create a mobile style so it appears better
+on phones and tablets. (See To Do below)
 
 Implementation
 ------------
 
-This website was written in [Python][] using the [Django][] framework. Django
-makes it really easy to write useful web apps quickly and cleanly. I love it.
+This website was written in [Python][] using [Hyde][], a framework that uses
+the [Django][] framework. Django makes it really easy to write useful web 
+apps quickly and cleanly. Hyde takes it a step further and generates static
+pages so they load quicker from my webhost. I don't really need a database
+and this way I don't have to worry about security vulnerabilities in my 
+pages or framework.
 
-[Blueprint][] kept me sane while writing the CSS. Grid layouts are no longer a
-nightmare!
+I use  [Markdown][] throughout the site for almost all content. The blog 
+entries and static pages are all written in Markdown and parsed to HTML5 
+later. I may also post papers that I've written in DocBook or LaTeX in
+either PDF or, in the case of DocBook, with an XML style sheet. DocBook and
+HTML5 are remarkably similar in terms of semantics.
 
-I rely pretty heavily on [Markdown][] throughout the site. The blog entries
-and static pages are all written in Markdown and parsed to XHTML later. This
-might not be the fastest way to do things but processor time is cheap and my
-time isn't.
+I write the Markdown syntax in some variant of [vim][] (MacVim, gvim, or 
+good 'ol command line vim) or sometimes similar editors such as gedit or 
+[TextMate][]. It all depends on which workstation that I'm working and
+what's available.
 
-The Markdown-based editor and preview for commenting is the wonderful [WMD][].
-It's clean, simple, and does exactly what I want it to do. Most of the other
-Javascript magic comes from [jQuery][]. I use the [jQuery form validation
-plugin][form validation] in a couple of places to make checking input easier.
+For site statistics I'm relying on the freely available and robust [Google
+Analytics][ga]. I am very fond of most of the Google products for a multitude
+of reasons. Many of their services offer a Python API and it's all pretty
+sleek in its usage.
 
-For site statistics I'm relying on the fantastic [Mint][]. It's got a gorgeous
-interface and is absurdly simple to install. Plus it's hosted on my own host
-so I have control. It's also just a one time fee, unlike some other site stat
-packages that charge monthly.
+Once I've written an entry, I shuttle it off to GitHub, where my site's code
+is located. This is to make it future proof and recoverable. I'm working on
+setting up a workflow where my server will automatically pull the latest
+content and render to static pages. Until that is complete, I just push
+the code to GitHub for safe keeping, then push the rendered HTML to my server
+using RSync. I adopted much of that code from [Steve Losh][sjl], as previously
+mentioned.
 
 My development process is pretty simple. I use [TextMate][] to edit the code
 and a [Mercurial][] repository to store it and protect against accidents. To
@@ -80,9 +89,40 @@ $10 a month. I'd recommend them to anyone.
 It's Open Source, Too!
 ----------------------
 
-Want to see what makes this site tick? Want to make it tick more smoothly?
-Feel free to head over to <http://bitbucket.org/sjl/stevelosh> and take a look
+I'm a bit of tech head and like to see the gears that turn in the background
+to make everything work. This is why I'm quite fond of [open source][oss]! An 
+additional advantage of open source is that many sites offer free tools
+and hosting for open source software.
+
+Feel free to head over to <https://github.com/dcode/nethedz_org> and take a look
 at the code.
+
+Site To Do
+-----------------
+ - Import past blog entries
+    - <strike>Wordpress from derek.ditch.name</strike> (imported from Internet Archive)
+    - Django from original nethedz.com
+    - Various other databases that I have lying around 
+    - Fix the post ordering to actually be chronological
+ - Further exploit Hyde
+    - Add categories to this site
+    - Implement cross-linked related entries
+    - trackback/ping?
+ - Design
+    - Clean up CSS
+    - Add mobile CSS
+    - Generate clean print CSS
+ - Automation
+    - Auto update on server side on Git push
+
+
+[post]: /blog/2011/02/back-to-the-basics
+[sjl]: http://stevelosh.com/
+[dpdm85]: http://web.mst.edu/~dpdm85/
+[Stone Henge]: http://www.stonehenge.co.uk/
+[vim]: http://www.vim.org/
+[ga]: http://www.google.com/analytics/
+[oss]: http://en.wikipedia.org/wiki/Open-source_software
 
 [Squarespace]: http://www.squarespace.com/
 [Python]: http://python.org

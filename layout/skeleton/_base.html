@@ -73,7 +73,9 @@
 	        </div><!-- #main -->
                  
 			<aside id="sidebar">
-				{% include "skeleton/_sidebar.html" %}
+			{% block sidebar %}
+			{% include "skeleton/_sidebar.html" %}
+			{% endblock %}
             </aside>
         </div><!-- #content -->
 		<footer id="ft1">

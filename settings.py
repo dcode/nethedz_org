@@ -59,8 +59,16 @@ SITE_PRE_PROCESSORS = {
         'hydeengine.site_pre_processors.NodeInjector' : {
             'variable': 'blog_node',
             'path': 'content/blog',
-        }
-    }
+        },
+    },
+    'blog': {
+        'hydeengine.site_pre_processors.CategoriesManager' : {
+            'node': 'blog', 
+            'template': '_archives.html', 
+            'output_folder': 'archives', 
+            'listing_template': '_archives_index.html',
+        },
+    },
 }
 
 SITE_POST_PROCESSORS = {

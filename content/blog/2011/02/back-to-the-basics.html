@@ -42,18 +42,57 @@ edition which has been incorporated into the mainline Wordpress and runs
 I then drifted away from PHP and picked up Python. I started hacking on
 Python CGI-based sites then picked up [Django][]. The problem with Django,
 was that it was all roll-your-own. The problem being that I spent all my time
-hacking on my website rather than writing anything.
+hacking on my website rather than writing anything. This was to add features,
+to keep up with the development cycles of other projects that I used, and
+to make sure my site didn't get hacked by some script kiddies.
 
 The Crux
 --------------
 
 Herein, lies the problem. I want a website that doesn't get in my way. Another
-problem is that my data gets locked away in these databases.
+problem is that my data gets locked away in these databases. Hence, my attraction
+to Hyde. 
+
+I've had blogs that have died due to my poor coding and the server just
+stopped running randomly. I've had blogs quit because the webhost upgraded
+the database and the development branch code I was using didn't support
+the new data engine. I've had blogs die because I crossed the memory threshold
+that I pay for on my webhost. And the last webblog I had died because
+the community died. I needed fixes for core parts of the code and it never
+came, thus the hacks I added to make them, caused it to break. I didn't 
+want to dig through and rewrite the whole damn thing.
+
+The Solution
+---------------
+With Hyde:
+
+ - All my content lies in flatfiles
+ - I use GitHub for backing it up
+ - Extending functionality uses something that I already know (Django)
+ - Minimal upkeep (I can clone the git repo and build it quickly)
+ - Just Simple
+    - No server side processes to break
+    - No database server to break
+    - No worries about when my webhost does database upgrades
+    - No worries about approaching my memory quota on my server
+    - Basically, slashdot-proof.
+ 
+Overall, the structure and workflow is just more robust and I like it. Even
+if Hyde suffered stagnation and the community died, all my content is stored
+in version controlled flat files that I can easily parse using a couple of
+lines of Python (or even Perl or PHP for that matter).
+
+I wrote this entry in two sessions. I may have had more on my mind for the 
+first session, but this is where I ended up. I may come back later and add
+more. Or even better, I'll mark a cross-referenced page. See my [To Do][]
+for this site on the [project][] page.
 
 [Julian]: http://juliankussman.com/
 [SSI]: http://en.wikipedia.org/wiki/Server_Side_Includes
 [WPMU]: http://ocaoimh.ie/new-wpmu-snapshot/
 [Wordpress.com]: http://www.wordpress.com/
-[Django][http://djangoproject.org/
+[Django]: http://djangoproject.org
+[To Do]: /projects/nethedz-org/#site-to-do
+[project]: /projects/nethedz-org/
 
 {% endblock %}

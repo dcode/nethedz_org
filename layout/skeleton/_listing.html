@@ -3,9 +3,9 @@
 {% block content %}
     <div class="section-listing">
         <ol class="group">
-            {% for node in page.node.walk reversed %}
-                {% include "skeleton/_innerlisting.html" %}
-            {% endfor %}
+        {% for node in page.node.walk %}
+        {% include "skeleton/_innerlisting.html" %}
+        {% endfor %}
         </ol>
     </div>
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Blast From the Past"
+    snip: "A Resurrection of Past Memories"
+    created: 2011-02-13 13:09:00
+    related: True
+%}
+
+{% block content %}
+Over the past week, I delved into the Internet Archive's [Wayback Machine][]
+in an attempt to resurrect content from my old site. In the height of my
+blogging days, I used early versions of [Wordpress][]. As I matured in my
+programming skills, I moved away from PHP (full story [here][back-to-basics]).
+
+While rebuilding this site using [Hyde][], I decided one of the features
+I wanted in reclaiming my content, was to bring in my old content from way
+back. I still have the tarball file that I dumped from the MySQL database
+including images and everything somewhere. I would prefer to go this route.
+And I'm not quite ruling it out if I ever happen to locate it. It should
+be rather straight forwards since I wrote those posts using the original
+PHP Markdown syntax.
+
+My initial attempts at finding that file failed, however. I have two old
+computers that have various archives of my past on them. These archives
+range from giant MP3 collections, my long-lost DVD library in AVI format,
+probably ISOs of Linux distributions that no longer exist, and of course,
+my web presence. I have been known from time to time to be a packrat...even
+a digital packrat.
+
+I have since reaped the content from the Wayback Machine and manually pasted
+it into Markdown-formatted files. It is now revision controlled with the rest
+of this site, hopefully to live forever and ever, with me in control of it.
+
+I have (or will) deactivate comments on those pages and put a little
+notice at the top indicating that it is there for posterity only, and not
+interactive.
+
+
+[Wayback Machine]: http://web.archive.org/
+[Wordpress]: http://wordpress.org
+[back-to-basics]: /blog/2011/02/back-to-the-basics/
+[Hyde]: https://github.com/lakshmivyas/hyde/
+
+{% endblock %}
