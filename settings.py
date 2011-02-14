@@ -21,7 +21,7 @@ DEBUG = True
 
 SITE_ROOT = "/"
 SITE_WWW_URL = "http://beta.nethedz.org"
-SITE_NAME = "NetHedz"
+SITE_NAME = "Digital Divigation"
 SITE_AUTHOR = "Derek Ditch"
 
 GENERATE_ABSOLUTE_FS_URLS = False
@@ -53,6 +53,13 @@ MEDIA_PROCESSORS = {
 }
 
 CONTENT_PROCESSORS = {}
+
+CATEGORIES = {
+    'coding': {
+        'description': 'Code is poetry. Get lost in it.'
+    }
+}
+
 
 SITE_PRE_PROCESSORS = {
     '/': {

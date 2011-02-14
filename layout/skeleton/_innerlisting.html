@@ -4,12 +4,14 @@
 {%spaceless%}
 
 {% for list_page in node.pages %}
+	<!-- list_page: {{ list_page }} -->
     {% ifnotequal list_page node.listing_page %}
         {% if not list_page.exclude %}
             {% include "skeleton/_listingitem.html" %}
         {%endif%}
-    {% endifnotequal %}
+	{% endifnotequal %}
 {% endfor %}
+
 
 {%endspaceless%}
 {% endblock %}

@@ -1,11 +1,31 @@
 {% extends "skeleton/_base.html"%}
 
 {% block content %}
-    <div class="section-listing">
-        <ol class="group">
-        {% for node in page.node.walk %}
-        {% include "skeleton/_innerlisting.html" %}
-        {% endfor %}
-        </ol>
-    </div>
+<div class="section-listing">
+	{% for node in page.node.walk reversed %}
+	<!-- Node: {{ node }} -->
+	<!-- Folder: {{ node.folder }} Depth: {{ node.folder.depth }} -->
+	{% ifchanged node.folder.depth %}
+	{% if node.folder.depth == 9 %}
+	{% if not forloop.first %}
+</ol>
+<br style="clear: both" />
+	{% endif%}
+	<h2>{{ node.folder.parent.name }}</h2>
+	<ol class="group">
+	{% endif %}
+	{% endifchanged %}
+
+    {% include "skeleton/_innerlisting.html" %}
+
+
+	{% if forloop.last %}
+	</ol>
+	{% endif %}
+	{% endfor %}
+	</ol>
+
+</div>
 {% endblock %}
+
+
