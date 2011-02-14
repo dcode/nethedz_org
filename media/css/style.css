@@ -225,3 +225,20 @@ img.self {
 	line-height: 25px;
 	font-style: italic;
 }
+
+.splash {
+	margin: 0 auto;
+	padding: 0 60px;
+	width: 400px;
+	font-variant: small-caps;
+	font-size: 150%;
+	text-align: center;
+}
+
+/*** notes & admonitions ***/
+.note, .admonition { padding:.8em 1em .8em; margin: 1em 0; border:1px solid #94da3a; }
+.admonition-title { font-weight:bold; margin-top:0 !important; margin-bottom:0 !important;}
+.admonition .last { margin-bottom:0 !important; }
+.note, .admonition { padding-left:65px; background:url(/media/images/docicons-note.gif) .8em .8em no-repeat;}
+div.admonition-philosophy { padding-left:65px; background:url(/media/images/docicons-philosophy.gif) .8em .8em no-repeat;}
+div.admonition-behind-the-scenes { padding-left:65px; background:url(/media/images/docicons-behindscenes.gif) .8em .8em no-repeat;}

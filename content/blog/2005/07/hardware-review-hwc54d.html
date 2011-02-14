@@ -1,4 +1,4 @@
-{% extends "_post.html" %}{#_#}
+{% extends "_oldpost.html" %}{#_#}
 
 {% hyde
     title: "Hardware Review: HWC54D"
@@ -7,9 +7,9 @@
 
 
 {% block article %}
-I bought a new wireless card for my 15″ Aluminum Powerbook on Friday. I’ve been
+I bought a new wireless card for my 15″ Aluminum Powerbook on Friday. I've been
 using it non-stop in place of the Airport eXtreme card that is built in. People
-wonder why I’d desire a second wireless card for my laptop, which is an
+wonder why I'd desire a second wireless card for my laptop, which is an
 understandable question. To put your mind at ease, here are some reasons:
 
  - I desired a *different* wireless card, not *another* wireless card
@@ -22,16 +22,16 @@ understandable question. To put your mind at ease, here are some reasons:
 
 By sticking to the Airport extreme, it basically limited me to using Mac OS X
 and commercial software for wireless access. I do like to wardrive from time to
-time, and Airport Extreme doesn’t have the ability to enter ‘promiscous mode’.
-If you don’t know why that is important, you probably don’t care much about the
-technical aspects of this review. I’ve been a user of Linux as my primary
-computing environment since late 2000 and I’ve fallen victim to the pleasures of
+time, and Airport Extreme doesn't have the ability to enter 'promiscous mode'.
+If you don't know why that is important, you probably don't care much about the
+technical aspects of this review. I've been a user of Linux as my primary
+computing environment since late 2000 and I've fallen victim to the pleasures of
 wireless technology.
 
 I ended up purchasing the Hawking Technology HWC54D PC Card. I was at CompUSA
 and was perusing through all of the WiFi products. What I was realy looking for
 was a card with an external antenna jack. I noticed the HWC54D because it
-included a “High-Gain directional Antenna”. This was certainly unique. I then
+included a "High-Gain directional Antenna". This was certainly unique. I then
 grabbed the box and walked over to the Apple section to run the card through
 Google to see what its innards were made of. I wanted to know if I could use it
 under Linux and KisMAC. As it turns out, this card uses the RaLink rt2500
@@ -39,7 +39,7 @@ chipset. Which is great news because RaLink is very open about their hardware
 specs. They released their rt2400 driver source code to an open source group to
 maintain and contribute. They later released the rt2500 chipset specs and code
 to the same group. I then checked the Kismet website to see if they supported
-it. Kismet does, however KisMAC doesn’t yet. I hope they add support soon. :-/
+it. Kismet does, however KisMAC doesn't yet. I hope they add support soon. :-/
 
 Anyway, so I bought it, noting that I could return it to CompUSA within 21 days
 (I think) with a receipt and get a full refund. Good enough for me. I brought it
@@ -53,22 +53,22 @@ problems and connect to my WPA-PSK/TKIP network immediately. Although the data
 rate was only 48Mbps even though I was in the same room as the AP. Whatever. I
 decided to do some performance testing. I took my Powerbook outside using the
 Airport Extreme card and pinging the AP until I reached the limit of
-connectivity. The Airport monitor in the toolbar isn’t very accurate for signal
+connectivity. The Airport monitor in the toolbar isn't very accurate for signal
 strength, so I used KisMAC to check actual signal strength. I then walked away
-until KisMAC couldn’t receive any signal at all from my AP. I closed then
-activated my new “High-Gain” card. I had pretty good signal. I was now at 24
-Mbps, which isn’t bad at all. The utility also claimed ‘Excellent’ signal
+until KisMAC couldn't receive any signal at all from my AP. I closed then
+activated my new "High-Gain" card. I had pretty good signal. I was now at 24
+Mbps, which isn't bad at all. The utility also claimed 'Excellent' signal
 quality, which indicates little interference. I continued to walk until I
 started to see packet loss. I was able to move about 30 meters from the AP.
-That’s 30 Meters in the direction of most obstacles. The AP was on the far side
+That's 30 Meters in the direction of most obstacles. The AP was on the far side
 of the house, so I was pretty impressed with the range.
 
 The next day I tested the power consumption rate of the card. Typically with my
 Airport Express on and using my laptop, I could have about 1 - 1.5 hrs of
 battery life. I could stretch 2 hrs if I turned the brightness all the way down,
-muted the speakers, and didn’t use much processor. I’m happy to report to you
+muted the speakers, and didn't use much processor. I'm happy to report to you
 that my laptop ran for about 2.5 hrs with a constant ping to the AP and playing
-MP3’s from my iTunes collection. So the power consumption is noteably lower than
+MP3's from my iTunes collection. So the power consumption is noteably lower than
 the Airport Extreme. This is to be expected of course, because the HWC54D is a
 PC Card, which uses a 3.3V or 5V power supply, which is less than the miniPCI
 card (I think). Also note, that I did in fact enable the Power Save mode in the
@@ -76,18 +76,18 @@ card utility. I did this since many people noted the card draining their
 battery. Maybe that has to do with the 48Mbps limit I noted earlier.
 
 I visited my friend Julian in his new apartment for a barbeque on Sunday. He
-lives in a cluster of apartments and has the intersection of about 6 or 7 AP’s
-in his apt. There was one named ‘linksys’ that I thought I’d try to connect to.
+lives in a cluster of apartments and has the intersection of about 6 or 7 AP's
+in his apt. There was one named 'linksys' that I thought I'd try to connect to.
 I was able to connect with a decent signal. I could browse the Interweb at
 pretty good speeds. The problem I had though, was that I kept getting kicked off
 the network. I blame it on somebody with a 2Wire DSL modem who is operating on
-channel 6, the same channel as ‘linksys’. The 2Wire network had a stronger
-signal and I believe was causing too much interference. Since they didn’t bother
-to change the SSID, I assume they probably aren’t using the wireless anyway.
+channel 6, the same channel as 'linksys'. The 2Wire network had a stronger
+signal and I believe was causing too much interference. Since they didn't bother
+to change the SSID, I assume they probably aren't using the wireless anyway.
 
-All in all, I’m happy with the performance of the card. It worked with the same
+All in all, I'm happy with the performance of the card. It worked with the same
 results under Kubuntu Linux, but I did have to compile the driver and utility
-from source. This didn’t bother me at all, as I am a *NIX geek. Hopefully
+from source. This didn't bother me at all, as I am a *NIX geek. Hopefully
 somebody will find this review useful. If you have similar results, or problems
-that I didn’t encounter, please leave a comment and share with the community.
+that I didn't encounter, please leave a comment and share with the community.
 {% endblock %}
