@@ -15,11 +15,11 @@
 		<title>{% block title %}{% endblock %}</title>
 		
         <!-- OpenID Support -->
-        <link rel="openid2.provider" href="https://www.google.com/accounts/o8/ud?source=profiles">
-        <link rel="openid2.local_id" href="http://www.google.com/profiles/derek.ditch">
+		<link rel="openid2.provider" href="https://www.google.com/accounts/o8/id" /> 
+		<link rel="openid2.local_id" href="http://www.google.com/profiles/derek.ditch" />
         
 		{% block feeds %}
-        <link href="http://feeds2.feedburner.com/derek.ditch" rel="alternate" title="{{ site.name }}" type="application/atom+xml" />
+		<link href="{{ site.full_url }}/feed/" rel="alternate" title="{{ site.name }} ATOM Feed" type="application/atom+xml" />
         {% endblock %}
 
 		{% block css %}
@@ -51,14 +51,22 @@
 		        </hgroup>
 		    </div>
 			
-		    <nav id="topnav"><!-- top nav -->
-		        <div>
-		            <ul> 
-						<li><a href="/">Home</a></li> 
-						<li><a href="/blog/">Blog</a></li> 
-			            <li><a href="/about/">About</a> 
-		            </ul> 
-	            </div>
+			<nav id="topnav"><!-- top nav -->
+			<!-- {{ page.node.module.name }} -->
+				{% block sitenav %}
+				<div id="sitenav">
+					<ul>
+						<li{% ifequal page.module site.module %} class="selected" {% endifequal %}>
+						<a href="{{site.listing_url}}">Home</a>
+						</li>    
+						{% for module in site.children %}
+						<li{% ifequal page.module module %} class="selected" {% endifequal %}>
+						<a href="{{module.listing_url}}"> {{module.name|unslugify}} </a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endblock %}
 	        </nav><!-- end of top nav --> 
 	    </header>
 	    

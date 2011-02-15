@@ -21,7 +21,7 @@ DEBUG = True
 
 SITE_ROOT = "/"
 SITE_WWW_URL = "http://beta.nethedz.org"
-SITE_NAME = "Digital Divigation"
+SITE_NAME = "Digital Divagation"
 SITE_AUTHOR = "Derek Ditch"
 
 GENERATE_ABSOLUTE_FS_URLS = False
@@ -79,6 +79,14 @@ SITE_PRE_PROCESSORS = {
 }
 
 SITE_POST_PROCESSORS = {
+    '/': {
+        'hydeengine.site_post_processors.GoogleSitemapGenerator':
+        {
+            'sitemap_file': DEPLOY_DIR + '/sitemap.xml',
+            'generator': HYDE_FOLDER + '/lib/sitemap_gen-1.4/sitemap_gen.py',
+
+            }
+        }
     # 'media/js': {
     #        'hydeengine.site_post_processors.FolderFlattener' : {
     #                'remove_processed_folders': True,
