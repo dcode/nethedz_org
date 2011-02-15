@@ -3,19 +3,16 @@
 
 {% block title %} NetHedz | Splash {% endblock %}
 {% block content %}
-    <div class="splash">
-        {% filter typogrify %}
+    <div class="column first width1">&nbsp;</div>
+    <section id="splash" class="column width2"> {% filter typogrify %}
             <p>Hello, I'm Derek.</p>
 
-            <p>
-                I'm a programmer, student, father, <span class="amp">&amp;</span>
-                Soldier from Columbia,&nbsp;Missouri.
-            </p>
+            <p> I'm a programmer, student, father, <span class="amp">&amp;</span>
+                Soldier from Columbia,&nbsp;Missouri.  </p>
 
-            <p>
-                If you want to get in touch with me,
-                <a href="mailto:derek.ditch@gmail.com">email</a> is best.
-            </p>
+            <p> If you want to get in touch with me,
+                <a href="mailto:derek.ditch@gmail.com">email</a> is best.</p>
         {% endfilter %}
-    </div>
+    </section>
+    <div class="column width1">&nbsp;</div>
 {% endblock %}

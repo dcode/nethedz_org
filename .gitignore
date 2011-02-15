@@ -1,6 +1,9 @@
 # Compiled Python #
 *.pyc
 
+.DS_Store
 # Development Server Log #
 #########################
 site.log
+
+*~

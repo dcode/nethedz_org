@@ -1,100 +1,99 @@
 {% extends "skeleton/_root.html" %}
 {% block all %}
-<!DOCTYPE html >    
-<!-- Paul Irish's technique for targeting IE, modified to only target IE6, applied to the html element instead of body -->
-<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"><![endif]-->
-<!--[if (gt IE 6)|!(IE)]><!--><html lang="en" class="no-js"><!--<![endif]-->
-	<head>
-	    {% block meta %}
-	    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	    <meta name="author" content="Derek Ditch" />
-	    
-	    {% block extra_meta %}{% endblock %}
+<html lang="en" class="no-js">
+    <!-- "no-js" class if for Modernizer. -->
+    <head>
+        {% block meta %}
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
+        <!-- This prevents the conditional comments below from holding up the page load
+        www.phpied.com/conditional-comments-block-downloads/ -->
+        <!--[if IE]><![endif-->
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <meta name="author" content="Derek Ditch" />
+        <meta name="copyright" content="Copyright Derek Ditch 2011. All Rights Reserved." />
+
+        <meta name="google-site-verification" content="IV0L4u8m6vYjzBEwvg5v1m71NqiRSL-qzHSB3ekOmdU" /> 
+        
+        {% block extra_meta %}{% endblock %}
         {% endblock %}
-	    
-		<title>{% block title %}{% endblock %}</title>
-		
+        
+
+        
         <!-- OpenID Support -->
-		<link rel="openid2.provider" href="https://www.google.com/accounts/o8/id" /> 
-		<link rel="openid2.local_id" href="http://www.google.com/profiles/derek.ditch" />
+        <link rel="openid2.provider" href="https://www.google.com/accounts/o8/id" /> 
+        <link rel="openid2.local_id" href="http://www.google.com/profiles/derek.ditch" />
         
-		{% block feeds %}
-		<link href="{{ site.full_url }}/feed/" rel="alternate" title="{{ site.name }} ATOM Feed" type="application/atom+xml" />
+        {% block feeds %}
+        <link href="{{ site.full_url }}/feed/" rel="alternate" title="{{ site.name }} ATOM Feed" type="application/atom+xml" />
         {% endblock %}
 
-		{% block css %}
-		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo:regular">
-		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Sans:regular,bold">
+        {% block css %}
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo:regular">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Sans:regular,bold">
 
-		<link rel="stylesheet" type="text/css" href="/media/css/style.css?1.0" />
-        <link rel="stylesheet" href="/media/css/print.css?1.0"    type="text/css" media="print" />
-        
+        <link rel="stylesheet" href="/media/css/baseline.css" />
+        <link rel="stylesheet" href="/media/css/site.css" />
+
         {% block extra_css %}{% endblock %}
         {% endblock %}
 
         <!-- Modernizr for feature detection of CSS3 and HTML5; must be placed in the "head" -->
         <!-- Script tag no longer needs type attribute -->
         <script src="/media/js/modernizr-1.6.min.js"></script>
-	</head>
-	<body class="">
-		<div class="skipto"> 
-            <a href="#content">Skip to content</a> <span class="slash">/</span> 
-            <a href="#topnav">Skip to content navigation</a> 
-        </div>
-        
-        <!-- Main nav, styled by targeting "#hd1 nav"; you can have more than one nav element per page -->
-	    <header role="banner" id="hd1">    
-	        <div id="banner">           
-		        <hgroup>
-				<h1><a href="{{ site.full_url }}" title="" rel="home">{{ site.name }}</a></h1> 
-			        <h2>CODER // RUNNER // FATHER // SUPERHERO</h2>
-		        </hgroup>
-		    </div>
-			
-			<nav id="topnav"><!-- top nav -->
-			<!-- {{ page.node.module.name }} -->
-				{% block sitenav %}
-				<div id="sitenav">
-					<ul>
-						<li{% ifequal page.module site.module %} class="selected" {% endifequal %}>
-						<a href="{{site.listing_url}}">Home</a>
-						</li>    
-						{% for module in site.children %}
-						<li{% ifequal page.module module %} class="selected" {% endifequal %}>
-						<a href="{{module.listing_url}}"> {{module.name|unslugify}} </a>
-						</li>
-						{% endfor %}
-					</ul>
-				</div>
-				{% endblock %}
-	        </nav><!-- end of top nav --> 
-	    </header>
-	    
-	    <div id="content">
-	    <!-- Content -->
-	        <div id="mainContent">
-			{% with page.node.ancestors|last as parent_node %}
-				{% with parent_node.url as parent_url %}
-					{% block admonition %}{% endblock %}
-                    {% block content %}{% endblock %}
-                {% endwith %}
-            {% endwith %}
-	        </div><!-- #main -->
-                 
-			<aside id="sidebar">
-			{% block sidebar %}
-			{% include "skeleton/_sidebar.html" %}
-			{% endblock %}
-            </aside>
-        </div><!-- #content -->
-		<footer id="ft1">
-		<div>
-			{% include "skeleton/_footer.html" %}
-		</div>
-		</footer><!-- #footer -->
+    </head>
+    <body class="page-grid">
+        <div id="page">
+            <div class="skipto"> 
+                <a href="#content">Skip to content</a> <span class="slash">/</span> 
+                <a href="#topnav">Skip to content navigation</a> 
+            </div>
 
-		{% block js %}       
-		<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+            <!-- Main nav, styled by targeting "#hd1 nav"; you can have more than one nav element per page -->
+            <header role="banner" id="branding">    
+                <div id="banner" class="logo">           
+                    <hgroup>
+                    <h1><a href="{{ site.full_url }}" title="" rel="home">{{ site.name }}</a></h1> 
+                    <h2>CODER // RUNNER // FATHER // SUPERHERO</h2>
+                    </hgroup>
+                </div>
+
+                <nav id="main-menu" class="full"><!-- top nav -->
+                <!-- {{ page.node.module.name }} -->
+                {% block sitenav %}
+                    <ul>
+                        <li{% ifequal page.module site.module %} class="selected" {% endifequal %}>
+                        <a href="{{site.listing_url}}">Home</a>
+                        </li>    
+                        {% for module in site.children %}
+                        <li{% ifequal page.module module %} class="selected" {% endifequal %}>
+                        <a href="{{module.listing_url}}"> {{module.name|unslugify}} </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endblock %}
+                </nav><!-- end of top nav --> 
+            </header>
+
+            <div id="content" class="width4 layout-grid">
+                <!-- Content -->
+                {% with page.node.ancestors|last as parent_node %}
+                {% with parent_node.url as parent_url %}
+                {% block admonition %}{% endblock %}
+                {% block content %}{% endblock %}
+                {% endwith %}
+                {% endwith %}
+
+           </div><!-- #content -->
+            <footer id="ft1" class="width4 clear">
+                {% include "skeleton/_footer.html" %}
+            </footer><!-- #footer -->
+        </div><!-- #page -->
+
+        {% block js %}       
+        <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
         <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
         <script src="/media/js/jquery.timeago.js" type="text/javascript"></script>
