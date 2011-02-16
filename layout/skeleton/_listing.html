@@ -8,11 +8,13 @@
 	{% ifchanged node.folder.depth %}
         {% if node.folder.depth == 9 %}
             {% if not forloop.first %}
-    </ol>
+        </ol>
+    </div>
     <br style="clear: both" />
             {% endif%}
-	<h2>{{ node.folder.parent.name }}</h2>
-    <ol class="group">
+    <h2>{{ node.folder.parent.name }}</h2>
+    <div class="">
+        <ol class="group">
         {% endif %}
 	{% endifchanged %}
 

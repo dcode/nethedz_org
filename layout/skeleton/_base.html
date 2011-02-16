@@ -31,8 +31,10 @@
         {% endblock %}
 
         {% block css %}
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo:regular">
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Sans:regular,bold">
+        <!-- Google Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo:regular" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Sans:regular,bold" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:regular" />
 
         <link rel="stylesheet" href="/media/css/baseline.css" />
         <link rel="stylesheet" href="/media/css/site.css" />
@@ -48,7 +50,7 @@
         <div id="page">
             <div class="skipto"> 
                 <a href="#content">Skip to content</a> <span class="slash">/</span> 
-                <a href="#topnav">Skip to content navigation</a> 
+                <a href="#main-menu">Skip to content navigation</a> 
             </div>
 
             <!-- Main nav, styled by targeting "#hd1 nav"; you can have more than one nav element per page -->
@@ -87,10 +89,11 @@
                 {% endwith %}
 
            </div><!-- #content -->
-            <footer id="ft1" class="width4 clear">
-                {% include "skeleton/_footer.html" %}
-            </footer><!-- #footer -->
-        </div><!-- #page -->
+       </div><!-- #page -->
+       <footer class="full clear">
+           {% include "skeleton/_footer.html" %}
+       </footer><!-- #footer -->
+
 
         {% block js %}       
         <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
