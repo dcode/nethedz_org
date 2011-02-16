@@ -20,7 +20,7 @@ BACKUP = False
 DEBUG = True
 
 SITE_ROOT = "/"
-SITE_WWW_URL = "http://beta.nethedz.org"
+SITE_WWW_URL = "http://nethedz.org"
 SITE_NAME = "Digital Divagation"
 SITE_AUTHOR = "Derek Ditch"
 

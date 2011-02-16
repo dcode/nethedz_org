@@ -28,7 +28,7 @@ hr                                  { background: #295; }
 
 #content ul { list-style-type: square; margin-left: 18px; }
 
-
+#splash     { min-height: 150px; }
 /******************* introduction *******************/
 /* type */
 .intro p                            { text-indent: 0; }
