@@ -55,7 +55,7 @@ MEDIA_PROCESSORS = {
 CONTENT_PROCESSORS = {}
 
 CATEGORIES = {
-    'coding': {
+    'code': {
         'description': 'Code is poetry. Get lost in it.'
     }
 }
