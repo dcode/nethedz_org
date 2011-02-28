@@ -136,7 +136,7 @@ a.photo:hover                       { background: none; }
 
 /******************* Listing Pages ****************/
 
-ol.group                        { text-align: center !important; width: 612px; margin-left: auto; margin-right: auto; }
+ol.group                        { text-align: center !important; width: 612px; margin-left: auto; margin-right: auto; list-style: none; }
 ol.group > li                   { float: left; width: 281px; height: 130px; margin: 0; text-align: center !important; }
 ol.group > li:nth-child(odd)    { margin-right: 25px; }
 ol.group > li:nth-child(even)   { margin-left: 25px; }
