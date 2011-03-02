@@ -15,4 +15,39 @@
         {% endfilter %}
     </section>
     <div class="column width1">&nbsp;</div>
+
+    <div id="widgets" class="full">
+        <section id="tweets" class="column width2 first">
+        </section>
+    </div>
 {% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="/media/css/jquery.jtweetsanywhere.css" />
+{% endblock %}
+{% block extra_js %}
+
+<script type="text/javascript">
+    $('#tweets').jTweetsAnywhere({
+        username: 'dcode',
+    count: 5,
+    showFollowButton: true,
+    tweetTimestampDecorator: function(tweet, options){ 
+        var screenName = tweet.user ? tweet.user.screen_name : false || tweet.from_user;
+        var date = new Date(formatDate(tweet.created_at));
+
+        var dateString =  date.getFullYear() + '-' + (date.getMonth()+1) + '-' +
+            date.getDate() + ' ' + date.getHours() + ':' + (date.getMinutes() <
+                10 ? '0' : '') + date.getMinutes();
+
+        var html = '<span class="jta-tweet-timestamp">' +
+            '<a class="jta-tweet-timestamp-link" href="http://twitter.com/' +
+            screenName + '/status/' + tweet.id + '">' + dateString + '</a></span>';
+
+        return html;
+    }
+});
+</script>
+
+{% endblock %}
+
