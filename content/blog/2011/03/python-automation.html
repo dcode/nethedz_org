@@ -6,88 +6,112 @@
     created: 2011-03-01 18:53:17
     related: back-to-the-basics
     categories: code
-    exclude: True
+	exclude: true
 %}
 
 {% block article %}
 
-I rewrote this site, as I have been doing regularly for the past 5 or 6 years
-on the interval of about 9 months. I read some pretty convincing arguments
-for static site generation. I don't know where, exactly, but I read somewhere
-about [Hyde][], a static site generator. 
-
-This entry aims to give a brief overview for my decision.
-
-[Hyde]: https://github.com/lakshmivyas/hyde/
+I briefly described my latest web migration in a [recent post][]. I wanted
+to share the little magic that goes on behind the scenes that makes it
+all flow very nicely. This magic isn't at all specific to web development
+or to [Hyde][] -- it's generally just cool automation.
 
 [TOC]
 
-The Recurring Problem
------------------------
+Virtualenv Wrapper
+--------------------------
+First up is the venerable [virtualenvwrapper][] by Doug Hellmann -- an extension to another tool called virtualenv. virtualenv is a Python tool
+that allows you to make a dedicated environment to a particular project.
+It can do this by just extending the existing system Python environment,
+or my preference, using just the base Python interpreter and install all 
+other dependencies explicitly.
 
-While I don't always follow this mantra, it's generally a good idea to not
-fix a problem that doesn't exist. This has led me to the triquarterly redesign
-of my site to try the latest, greatest framework.
+Anyone that has worked with me and my coding style will know that I am
+rather pedantic when it comes to dependencies. If file A depends on file B
+and file C, I `#include` then in file A, even if file B `#include`s file
+C. I like it to be very clear what depends on what. Likewise, I like my
+Python projects to be able to explicitly list what libraries it depends
+upon. Virtualenv allows you to do this with the `--no-site-packages`
+option. You can then install the packages you need and list them in a
+`requirements.txt` file, which can be fed into `pip`. Pip, of course,
+being the "pip installs packages" tool, which replaces easy_install.
 
-I started out my blogging days using Wordpress....nay...it goes back further
-than that. My friend [Julian][] and I had an old Geocities site under our
-psuedonyms Kalvyn and Hobbbz. And this was well before they had the cute little
-inline WSYWYG editor. There was a textbox that loaded the HTML (3) for your
-page where you could edit it, unassisted. They would then use [SSI][] to 
-insert ads into your page.
+So, back to virtualenvwrapper, this is really the hardest part to setup
+(and it's quite easy). Since I want virtualenv available to all users
+of my system, I simply execute:
 
-So, the next way forward was using Wordpress. I enjoyed hacking on the
-internals, too. I helped port Wordpress 1.5 into [WPMU], the multi-user
-edition which has been incorporated into the mainline Wordpress and runs
-[Wordpress.com][].
+	sudo pip install virtualenv
 
-I then drifted away from PHP and picked up Python. I started hacking on
-Python CGI-based sites then picked up [Django][]. The problem with Django,
-was that it was all roll-your-own. The problem being that I spent all my time
-hacking on my website rather than writing anything. This was to add features,
-to keep up with the development cycles of other projects that I used, and
-to make sure my site didn't get hacked by some script kiddies.
+This works on my Mac, it works on Fedora (with some tweaking of sudo) and
+it works on Ubuntu or any other UNIX-based OS out there. I haven't messed
+with Python on Windows in recent times, but given a nice, modern
+distribution of Python on Windows, I bet it would work like a charm there
+too (except w/o sudo, maybe runas if you're not an admin).
 
-The Crux
---------------
+So, once you have virtualenv installed, you'll also want to install 
+virtualenvwrapper. This is accomplished the same way, with a few tweaks
+after install (hell, you probably could have just skipped the previous 
+step since pip is smart enough to handle dependencies):
 
-Herein, lies the problem. I want a website that doesn't get in my way. Another
-problem is that my data gets locked away in these databases. Hence, my attraction
-to Hyde. 
+	sudo pip install virtualenvwrapper
+	
+So...now you have virtualenvwrapper installed, you want to set it up.
+You need to set the environment variable `WORKON_HOME` and then source
+the virtualenvwrapper shell script. I recommend doing this in your
+`.bashrc` or `.profile` in your user home directory (I've never tried
+this under zsh or similar, I think it's bash only). Just add the following
+lines (with your particulars):
 
-I've had blogs that have died due to my poor coding and the server just
-stopped running randomly. I've had blogs quit because the webhost upgraded
-the database and the development branch code I was using didn't support
-the new data engine. I've had blogs die because I crossed the memory threshold
-that I pay for on my webhost. And the last webblog I had died because
-the community died. I needed fixes for core parts of the code and it never
-came, thus the hacks I added to make them, caused it to break. I didn't 
-want to dig through and rewrite the whole damn thing.
+	WORKON_HOME=$HOME/Projects/virtualenvs
+	export WORKON_HOME
+	source /usr/local/bin/virtualenvwrapper.sh
 
-The Solution
----------------
-With Hyde:
+Complete the initial setup by running `mkdir -p $WORKON_HOME`. Now, what
+this does is quite simple. We're storing our virtual environments under
+`~/Projects/virtualenvs` and we have to make that directory. The `source`
+line adds tab-completion and some handy commands to your shell.
 
- - All my content lies in flatfiles
- - I use GitHub for backing it up
- - Extending functionality uses something that I already know (Django)
- - Minimal upkeep (I can clone the git repo and build it quickly)
- - Just Simple
-    - No server side processes to break
-    - No database server to break
-    - No worries about when my webhost does database upgrades
-    - No worries about approaching my memory quota on my server
-    - Basically, slashdot-proof.
- 
-Overall, the structure and workflow is just more robust and I like it. Even
-if Hyde suffered stagnation and the community died, all my content is stored
-in version controlled flat files that I can easily parse using a couple of
-lines of Python (or even Perl or PHP for that matter).
+So, we want to start a project. Since I'm writing about this site, we'll
+call it `nethedz_org`. I keep my website projects under `~/Sites`. Here
+we go:
 
-I wrote this entry in two sessions. I may have had more on my mind for the 
-first session, but this is where I ended up. I may come back later and add
-more. Or even better, I'll mark a cross-referenced page. See my [To Do][]
-for this site on the [project][] page.
+	mkdir ~/Sites/nethedz_org
+	cd ~/Sites/nethedz_org
+	
+	mkvirtualenv --distribute --no-site-packages nethedz_org
+	
+You'll notice that there's nothing in your current directory. All the
+virtualenv files went to `$WORKON_HOME`. The `--distribute` option tells
+virtualenv that we don't want setuptools, but rather [distribute][].
+The `--no-site-packages` is my preference. Basically it says don't use
+any of the system python libraries beyond the base python distribution.
+The advantage of this to me is that you know for sure what all your
+dependencies are. Since I may develop code on any box connected to the
+Interwebs, I like to be explicit about this.
+
+Speaking of explicit, I list all dependencies in a file at the top of my
+project called `requirements.txt`. This allows me to use `pip` very easily
+to install everything I need on a clean system.
+
+Additional automation tips that I use for this site, is I backup my code
+using `git` and host it over at [Github][]. If you only use what I've
+described so far, you can follow the instructions in the README file there
+to setup this site.
+
+*SIDENOTE*: You're free to look at the code and layout and CSS and
+all, but please don't rip off my site. I started with another site's code
+but I completely gutted it to make it my own. Please respect my efforts
+and do the same.
+
+Fabric
+------------
+
+[recent post]: /blog/2011/02/back-to-the-basics/
+[Hyde]: {{ links.hyde }}
+[virtualenvwrapper]: http://www.doughellmann.com/projects/virtualenvwrapper/
+[distribute]: http://packages.python.org/distribute/
+[Github]: https://github.com/dcode/nethedz_org
+
 
 [Julian]: http://juliankussman.com/
 [SSI]: http://en.wikipedia.org/wiki/Server_Side_Includes
