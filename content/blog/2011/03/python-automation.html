@@ -6,7 +6,7 @@
     created: 2011-03-01 18:53:17
     related: back-to-the-basics
     categories: code
-	exclude: false
+    exclude: false
 %}
 
 {% block article %}
@@ -40,7 +40,7 @@ So, back to virtualenvwrapper, this is really the hardest part to setup
 (and it's quite easy). Since I want virtualenv available to all users
 of my system, I simply execute:
 
-	sudo pip install virtualenv
+    sudo pip install virtualenv
 
 This works on my Mac, it works on Fedora (with some tweaking of sudo) and
 it works on Ubuntu or any other UNIX-based OS out there. I haven't messed
@@ -53,8 +53,8 @@ virtualenvwrapper. This is accomplished the same way, with a few tweaks
 after install (hell, you probably could have just skipped the previous 
 step since pip is smart enough to handle dependencies):
 
-	sudo pip install virtualenvwrapper
-	
+    sudo pip install virtualenvwrapper
+    
 So...now you have virtualenvwrapper installed, you want to set it up.
 You need to set the environment variable `WORKON_HOME` and then source
 the virtualenvwrapper shell script. I recommend doing this in your
@@ -62,9 +62,9 @@ the virtualenvwrapper shell script. I recommend doing this in your
 this under zsh or similar, I think it's bash only). Just add the following
 lines (with your particulars):
 
-	WORKON_HOME=$HOME/Projects/virtualenvs
-	export WORKON_HOME
-	source /usr/local/bin/virtualenvwrapper.sh
+    WORKON_HOME=$HOME/Projects/virtualenvs
+    export WORKON_HOME
+    source /usr/local/bin/virtualenvwrapper.sh
 
 Complete the initial setup by running `mkdir -p $WORKON_HOME`. Now, what
 this does is quite simple. We're storing our virtual environments under
@@ -75,11 +75,11 @@ So, we want to start a project. Since I'm writing about this site, we'll
 call it `nethedz_org`. I keep my website projects under `~/Sites`. Here
 we go:
 
-	mkdir ~/Sites/nethedz_org
-	cd ~/Sites/nethedz_org
-	
-	mkvirtualenv --distribute --no-site-packages nethedz_org
-	
+    mkdir ~/Sites/nethedz_org
+    cd ~/Sites/nethedz_org
+    
+    mkvirtualenv --distribute --no-site-packages nethedz_org
+    
 You'll notice that there's nothing in your current directory. All the
 virtualenv files went to `$WORKON_HOME`. The `--distribute` option tells
 virtualenv that we don't want setuptools, but rather [distribute][].
