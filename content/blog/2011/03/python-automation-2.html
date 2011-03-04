@@ -1,0 +1,37 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Python Automation (continued)"
+    snip: "%%SNIP%%"
+    created: 2011-03-04 08:25:07
+    related: python-automation, back-to-the-basics
+    no_comments: False
+    exclude: True
+%}
+
+{% block article %}
+
+In my [last post][] I described some of the initial magic that I use to automate
+this site. That initial magic is using virtual python environments through the
+use of *virtualenv* and *virtualenvwrapper*. See that post for more.
+
+In this post, I'm gonna describe a more general purpose tool that allows
+automation through Python scripts across hosts, Fabric.
+
+[TOC]
+
+Fabric
+-------------
+
+[Fabric][] has got to be one of the greatest Python tools I've come across
+in a long time. I've written similar code that used an XML-RPC mechanism,
+but Fabric does it right. And I'm really glad I found it when I did. I was
+actually starting to work on something very similar from the ground up
+for my own usage.
+
+[last post]: /blog/2011/03/python-automation/
+[Fabric]: http://docs.fabfile.org/0.9.4/
+
+
+{% endblock %}
+
