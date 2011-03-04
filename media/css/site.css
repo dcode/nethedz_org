@@ -184,3 +184,9 @@ ol.group > li span.snip         { font-size: 18px; color: #333; line-height: 25p
 /* layout */
 body > footer                       { border-top: solid 4px #000; margin-top: 14px; padding-bottom: 18px; position: relative; background: black; padding-top: 18px; color: #c1bcac; }
 body > footer > div                 { margin-left: auto; margin-right: auto; width: 990px; }
+
+/********************* Code **********************/
+.codehilite { margin-top: 15px; margin-bottom: 10px; background: #f0f0f0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+
+div.codehilite pre { background-color: transparent; margin: 0; padding: 10px; border: none; overflow: auto; }
+pre { font-size: 13px; font-family: Bitstream Vera Sans Mono, monospace; }
