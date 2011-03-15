@@ -1,12 +1,18 @@
--e svn+http://code.djangoproject.com/svn/django/branches/releases/1.2.X/#egg=django
--e svn+http://typogrify.googlecode.com/svn/trunk/#egg=typogrify
--e svn+http://svn.cherrypy.org/tags/cherrypy-3.2.0rc1#egg=cherrypy
--e git+http://git.gitorious.org/python-markdown/mainline.git#egg=markdown
--e git+https://github.com/lakshmivyas/hyde.git#egg=hyde
+# Hyde Trunk requirements
+#argparse
+#commando
+#jinja2
+#markdown
+#pyyaml
+#pygments
+#smartypants
+#-e git://github.com/hyde/typogrify.git#egg=typogrify
 
-fabric
-PyYAML
-smartypants
-Pygments
-PIL
+-e git://github.com/hyde/hyde.git#egg=hyde
+
+# Site specific plugins
 pytz
+
+# For site automation
+fabric
+
