@@ -69,14 +69,15 @@
                         + "</li>"),
                 };
             var options = $.extend(defaults, arguments[0]), 
-                $this = $('#stream'),
+                $this = $(this),
                 data = $this.data('stream');
 
             var registry = data.registry;
-            alert( registry.length );
+
             registry[registry.length] = options;
             $this.data('stream', {registry: options,} );
-            alert("register: data['registry'] length: " + $this.data['registry'].length );
+
+            alert("Line 80");
 
         },
 
@@ -109,7 +110,7 @@
                  * for rendering
                  */
                 var entries = [],
-                    registry = data['registry'];
+                    registry = data.registry;
 
                 alert( "Registry length:" + registry.length );
                 $.each(registry, function(index, item){
