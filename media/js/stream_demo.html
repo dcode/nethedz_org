@@ -3,8 +3,7 @@
         <title>Stream Plugin Test</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
         <script src="jquery.tmpl.min.js" type="text/javascript"></script>
-        <script src="jquery.stream.delicious.js" type="text/javascript"></script>
-        <script src="jquery.stream.github.js" type="text/javascript"></script>
+                        <!--<script src="jquery.stream.github.js" type="text/javascript"></script>-->
 
 
         <style type="text/css">
@@ -21,12 +20,17 @@
         <ul id="stream"></ul>
     </div>
 
+    <script src="jquery.stream.js" type="text/javascript"></script>
+    <script src="jquery.stream.delicious.js" type="text/javascript"></script>
+
     <script type="text/javascript">
-        $().ready(function() {
-                //$("#stream").delicious( { user: "derek.ditch", });
-                $("#stream").github( { user: "dcode", });
+        $(document).ready(function(){
+            $("#stream").stream('init');
+            $("#stream").stream_delicious( { user: "derek.ditch", });
+            $("#stream").stream('render');
         });
     </script>
+
 </body>
 </html>
 

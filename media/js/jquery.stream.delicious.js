@@ -1,51 +1,48 @@
-/*
+/* A Delicious plugin for the jQuery Stream plugin.
  *
- *
- *
+ * @author: Derek Ditch <derek.ditch@gmail.com>
+ * @date: 2011.03.15
  */
 
 (function($){
-    $.fn.extend({
-        delicious: function( options ){
+    $.fn.stream_delicious = function( options ){
+        var defaults = { user: 'example', }
+        var options = $.extend(defaults, options);
+        var data = $(this).data('stream_delicious', {user: options['user'],});
+
+        return this;
+    };
+
+    $(this).stream('register', {
+        name: 'stream_delicious',
+        method: function( options ){
             // Set default values
             var defaults = {
                 count: 10,
-                template: $.template( "deliciousTemplate",
-                    "<li class=\"bookmark \">"
-                        + "<h5><span class=\"meta\">"
-                        + "LINK // <time datetime=\"${dt}\">${dateline}</time></span>"
-                        + "<a href=\"${u}\">${d}</a></h5>"
-                        + "<p>${n}</p>"
-                    + "</li><hr />"
-                )
             }
 
             var options = $.extend(defaults, options);
+            var data = $(this).data('stream_delicious');
+            var url_ = "http://feeds.delicious.com/v2/json/" + data['user'] + "?count=" 
+                        + options.count + "&callback=?";
+            var entries = [];
 
-            return this.each(function() {
-                var o = options;
-                var url_ = "http://feeds.delicious.com/v2/json/" + o.user + "?count=" + o.count + "&callback=?";
-
-                function pad_digit ( value )
-                {
-                    return (value < 10 ? '0' + value : value);
-                }
-
-                $.getJSON( url_, function(data) {
-                    $("#stream").empty();
-                    $.each( data, function ( i, item ){
-                        var d_ = new Date( item.dt );
-                        item.dateline = d_.getFullYear() + '.' + pad_digit(d_.getMonth() + 1) + '.' 
-                            + pad_digit( d_.getDate() ) + ' // '
-                            + pad_digit( d_.getHours() ) + ':' 
-                            + pad_digit( d_.getMinutes() );
-
-                        $.tmpl("deliciousTemplate", item ).appendTo("#stream");
-                    });
+            $.getJSON( url_, function(data) {
+                $.each( data, function ( index, item ){
+                    var context = {
+                        stream_type: "Link",
+                        datetime: item.dt,
+                        url: item.u,
+                        title: item.d,
+                        body: item.n,
+                    };
+                    entries[entries.length] = context;
                 });
-
             });
-        }
 
+            return entries;
+        }
     });
+
+    return this;
 })(jQuery);
