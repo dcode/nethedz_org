@@ -118,7 +118,7 @@ CONTEXT = {
 
 FILTER = {
     'include': (".htaccess",),
-    'exclude': (".*","*~")
+    'exclude': (".*","*~", "*.js")
 }
 
 
