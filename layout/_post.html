@@ -20,12 +20,23 @@
                     </a>
                 </h1>
                 <p>
-                    Posted 
+                    Created 
                     <time class="timeago"
                           datetime="{{ page.created|html5_datetime }}" 
                           pubdate >
                     </time>
                     on {{ page.created|date:"F j, Y" }}.
+                </p>
+                <p>
+                    {% if page.created < page.updated %}
+                    Updated 
+                    <time class="timeago"
+                          datetime="{{ page.updated|html5_datetime }}" 
+                          pubdate >
+                    </time>
+                    on {{ page.updated|date:"F j, Y" }}.
+
+                    {% endif %}
                 </p>
             </header>
             <section class="column first width3">
