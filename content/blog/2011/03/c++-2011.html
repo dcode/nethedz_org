@@ -1,0 +1,57 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "C++ 2011"
+    snip: "A new standard"
+    created: 2011-03-26 22:18:10
+    related: None
+    no_comments: False
+    exclude: True
+%}
+
+{% block article %}
+Just a quick note on the impending release of the [ISO C++ 2011][] specification. It
+gets a lot of flack from the hipsters that are into the new age, high-level
+languages like [Go], [Python], or even [Java]. The thing is, C++ isn't these
+languages. I use Python for tons of stuff. I prefer Python for a
+rapid-development platform and things like web development. I use Python for
+[this site][].
+
+C++ is, in my humble opinion, a great low/medium level programming language.
+It's like Genie from Aladdin: [phenomenal cosmic power, ity bity living
+space][genie]. 
+
+It's lean and mean, but gives you the convenience to do things elegantly when
+you so desire. Now, I may be biased, after all, I learned the core of Computer
+Science using C++ as my required tool. On the other hand, prior to learning C++,
+I learned Java, and before that BASIC then Visual Basic.
+
+C++ gets a bad rap because people say that it's clunky and bloated compared to C
+and it's way more easy to shoot yourself in the foot than using something like
+Java or Python. All of that is true. However, just because Java and Python will
+clean up your mess with garbage collection and such, that's no excuse for lousy
+programmers that can't do a good design. And with C, the thing is, C++ allows
+you to use programming methodologies that reflect the real world. That is,
+create C++ classes that model real objects that can do stuff and respond to
+events.
+
+My take is that if C++ developers wrote code that follows the [Boost][] and/or
+[Qt][] ideologies, these safety problems go away. You're left with a lean,
+mean, non-platform specific program that can clean up after itself and get the
+job done with a reasonable expectation of safety and security...but I'm writing a
+paper on those topics, so I'll leave that for another blog post.
+
+Cheers.
+
+
+[ISO C++ 2011]: http://herbsutter.com/2011/03/25/we-have-fdis-trip-report-march-2011-c-standards-meeting/
+[Go]: http://golang.org/
+[Python]: http://www.python.org/
+[Java]: http://www.java.com/
+[this site]: /about/
+[genie]: http://www.youtube.com/watch?v=SfTfXLLJlzM
+[Boost]: http://www.boost.org/
+[Qt]: http://qt.nokia.com/
+
+{% endblock %}
+
