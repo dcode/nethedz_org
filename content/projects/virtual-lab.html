@@ -1,0 +1,60 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Virtual Lab"
+    snip: "%%SNIP%%"
+    created: 2011-04-07 17:56:05
+    related: migratory-swallows, back-to-the-basics
+    no_comments: False
+    exclude: True
+%}
+
+{% block article %}
+Ah.....yeah...so I used VirtualBox, which is a lot nicer than it was when I used
+it initially. Create one VM of the smallest size possible to run the code. If
+you're using Ubuntu, I recommend using the server install to install the minimal
+amount possible. Alternatively, you can download Turnkey Linux Base, which
+provides a virtualbox image at 149MB per host. You can just copy that for as
+many hosts as you need and configure it. If you copy the VM after you perform
+the setup, you'll have to change some config files that are per-machine in /etc
+that happens on first boot. Namely change the hostname and mac address. It might
+be easier to just wiz through the quick first-boot process for each machine
+giving each machine a unique hostname.
+
+Once you have all the hosts you need and networking configured as desired (this
+can be tricky depending on your needs for the simulation), compile on one linux
+host and push the resulting binaries to the virtual hosts for execution. There's
+a few easy ways to automate this.
+
+What I had done before was to create a tarball of all binaries and libraries
+that I needed from the project and scp it to the virtual hosts. I did this all
+at once using [Terminator][]. Terminator lets you send input to multiple
+terminals at once, so I would open multiple terminals and SSH into the virtual
+hosts then SCP from there. Once the files were on the remote hosts, I could run
+them all using the same Terminator session. (If you're a KDE fan, you can do
+this with Konsole).
+
+That's certainly a simple, no-frills way of doing it. Looking back, I would do
+things slightly differently for my own convenience. I've recently been using a
+Python framework called Fabric. Fabric allows you to send files and run scripts
+on remote hosts over SSH and rsync. You could use Fabric to run the build
+script, then push the binaries to the remote systems and maybe do some follow-on
+setup (making sure /etc/hosts is the same on all platforms, for example).
+
+I would still use Terminator or Konsole to launch the processes unless you
+create some sort of daemon that allows a nice graceful startup. The argument
+parsing that I built into the older projects allowed for a configuration file to
+ease launching each process with the right arguments. You could push this out
+with the binaries using the same Fabric script. Doing this, you could feasibly
+use different Fabric configurations to push different experiments.
+
+Hopefully that gets some cogs spinning. Let me know if you need any help or
+additional pointers. I have recently jumped the Ubuntu ship for Scientific Linux
+(a RedHat clone compiled by CERN) or Fedora, but I still have a thorough
+understanding of the boot sequence and system configuration of Debian and Ubuntu
+if you run into problems with the virtual hosts and networking.
+
+[Terminator]: http://www.tenshu.net/terminator/
+
+{% endblock %}
+
