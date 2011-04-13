@@ -1,0 +1,32 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Upgraded Hyde"
+    snip: "An Unexpected Nudge"
+    created: 2011-04-13 09:46:05
+    related: None
+    no_comments: False
+    exclude: False
+%}
+
+{% block article %}
+Today I tried to add some content. In doing so, I wanted to upgrade Fabric to
+get some additional features. I took a blind leap of faith and just wiped out my
+virtualenv and just tried to reinstall. Incidentally, the hyde branch that I had
+been following no longer exists, and so I chased my tail trying to figure out
+why the hell I couldn't pull the latest.
+
+So, I've been forced to upgrade to the latest hyde. I don't know what that means
+yet, hopefully this site will continue to generate and I can clean it up with
+Jinja2 templates over time. I might lose some features in the short term, but
+the new Hyde includes several niceties such as tags (which I've been wanting to
+do for a while) and some optimization stuff. On top of that, I like Jinja2
+templates better than the built-in Django templating engine. Just a bit cleaner
+and less bloat since I don't need the whole Django ORM.
+
+**EDIT**: As it turns out, this was a beast to do, so it's getting shelved and I
+will revert to a virtualenv that I have on another machine until I can sort this
+out. \**grumble grumble*\*
+
+{% endblock %}
+

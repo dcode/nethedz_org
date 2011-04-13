@@ -1,0 +1,66 @@
+{% extends "_post.html" %}{#_#}
+
+{% hyde
+    title: "Python Automation (continued)"
+    snip: "%%SNIP%%"
+    created: 2011-04-07 16:10:07
+    related: python-automation, back-to-the-basics
+    no_comments: False
+    exclude: True
+%}
+
+{% block article %}
+
+In a [previous post][] I described some of the initial magic that I use to automate
+this site. That initial magic is using virtual python environments through the
+use of *virtualenv* and *virtualenvwrapper*. See that post for more.
+
+In this post, I'm gonna describe a more general purpose tool that allows
+automation through Python scripts across hosts, Fabric.
+
+[TOC]
+
+Fabric
+-------------
+
+[Fabric][] has got to be one of the greatest Python tools I've come across
+in a long time. I've written similar code that used an XML-RPC mechanism,
+but Fabric does it right. And I'm really glad I found it when I did. I was
+actually starting to work on something very similar from the ground up
+for my own usage.
+
+What Fabric provides for me in the context of authoring this website is
+automated build and publishing capability. In the most general sense, Fabric
+provides a way to script administrative tasks on local and remote machine(s)
+using a local Python script.
+
+It performs these actions using SSH, rsync, some UNIX shell utilities like sed,
+and even some Django integration for some backend automation. I've certainly
+seen most usage of Fabric used in conjunction with website management, but I'm
+working on some scripts that will provide some administrative functionality for
+managing routers and switches over SSH -- things like pulling configs, running
+stats, and pushing quick fixes like a logging server change.
+
+Example
+--------------
+
+So I'll run through just the simple script that this site currently uses. The
+heart of any Fabric deployment is the `fabfile.py`. The command on your path
+that you use is `fab`. `fab` travels up the directory tree until it finds a
+fabfile that it can use. While I use a flat `fabfile.py` Python module, you can
+also use a `fabfile/` directory containing an `__init__.py` file. Optionally,
+you can point `fab` to any other Python module.
+
+So `fab` will import your fabfile and generate a list of tasks to perform. These
+tasks have certain properties that you can modify on the command line. One
+property is the hosts. Fabric will run each specified task on each host
+specified in `env.hosts`, which is a Python list of host strings. A host string
+contains a username and host definition (optionally a port number). An example is `user@www.example.com` or
+`author@10.10.10.10:22`.
+
+[previous post]: /blog/2011/03/python-automation/
+[Fabric]: http://docs.fabfile.org/0.9.4/
+
+
+{% endblock %}
+

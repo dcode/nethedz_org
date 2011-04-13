@@ -2,14 +2,33 @@
 
 {% hyde
     title: "Virtual Lab"
-    snip: "%%SNIP%%"
+    snip: "An overview of how I employ Linux and Virtualization for simluations."
     created: 2011-04-07 17:56:05
-    related: migratory-swallows, back-to-the-basics
     no_comments: False
     exclude: True
 %}
 
 {% block article %}
+
+So, if you've read my about page or know me then you know that I'm a PhD student
+and have participated in a number of different research projects. When I first
+entered the research realm, I was writing Turbo-C++ on a DOS box that
+manipulated voltages using a power electronics on two ISA boards. Mind you, I
+did this in 2006. It was despicable, but that was working with legacy systems.
+
+Fast forward a couple of years and I get to architect code and simulations of my
+own. Since I got to choose the platform (well not the Matlab part), I chose
+Linux which wasn't a hard sell. The other projects that I've been on had used
+Linux for real-time constraints and fine-grained control of the process
+scheduler.
+
+Next, I chose Boost as the primary framework so that I didn't have to reinvent
+the last 15 years of C++ coding and experience. And finally, I chose CMake as
+the build chain because I came into Autotools late in the game and hate them.
+What I like about CMake is the ease of out-of-source builds. I'm not crazy about
+the macro language, I think SCons or something
+
+[TOC]
 Ah.....yeah...so I used VirtualBox, which is a lot nicer than it was when I used
 it initially. Create one VM of the smallest size possible to run the code. If
 you're using Ubuntu, I recommend using the server install to install the minimal
