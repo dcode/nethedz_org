@@ -1,6 +1,6 @@
 {% extends "skeleton/_base.j2"%}
 
-{% block title %}{{ resource.meta.title }} | {{ super() }}{% endblock %}
+{% block title %}{{ resource.meta.title|safe }} | {{ super() }}{% endblock %}
 
 {% block content -%}
     <section class="column first width4">
@@ -25,9 +25,9 @@
             <li>
             <!-- res.meta {{ res.meta }} -->
                 <a href="{{ content_url(res.url) }}">
-                    {{ res.meta.title|typogrify }}
+                    {{ res.meta.title|safe }}
                 </a>
-                <span class="snip">{{ res.meta.snip|typogrify }}</span>
+                <span class="snip">{{ res.meta.snip|safe }}</span>
             </li>
         {% if loop.last %}
         </ol>

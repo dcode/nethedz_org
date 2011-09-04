@@ -1,1 +1,100 @@
-{}
+.hyde_deps: []
+404.html: [_flatpage.j2, skeleton/_root.j2, skeleton/_footer.j2, macros.j2, skeleton/_base.j2]
+about.html: [skeleton/_root.j2, skeleton/_footer.j2, macros.j2, skeleton/_base.j2]
+blog/2004/10/lots-of-speed-lots-of-gas.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2004/10/pity.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2004/12/lessons-of-life-and-death.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2004/12/struggling.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2004/12/the-cause-of-humanity.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2004/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_listing.j2,
+  macros.j2, skeleton/_base.j2]
+blog/2005/02/a-tale-of-great-sorrow.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/02/confidence-in-humanity.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/02/harder-better-faster-stronger.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/02/neglect.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/02/simple-php-gallery-added.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/03/goodbyes.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/03/healing-for-everyone.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/04/all-apologies.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/04/nerd-test.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/04/slashback-for-apr-2005.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/05/an-informal-toast-to-memories.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/06/innovative-dreams-and-directories.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/07/hardware-review-hwc54d.html: [skeleton/_root.j2, skeleton/_footer.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/08/d-the-conquistador.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/08/pplento-20050806.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/09/there-and-back-again.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2005/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_listing.j2,
+  macros.j2, skeleton/_base.j2]
+blog/2006/03/fan-fare.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, _oldpost.j2, macros.j2, skeleton/_disqus.j2]
+blog/2006/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_listing.j2,
+  macros.j2, skeleton/_base.j2]
+blog/2011/02/back-to-the-basics.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/02/blast-from-the-past.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/02/migratory-swallows.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/03/c++-2011.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/03/energy-independence.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/03/python-automation.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/04/family-values.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/04/python-automation-2.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/04/upgraded-hyde.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/07/installing-graphtool-on-snowleopard.html: [skeleton/_root.j2, skeleton/_disqus.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/08/cyber-strategy-and-tactics.html: [skeleton/_root.j2, skeleton/_disqus.j2,
+  skeleton/_sidebar.j2, skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+blog/2011/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_listing.j2,
+  macros.j2, skeleton/_base.j2]
+blog/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_listing.j2, macros.j2,
+  skeleton/_base.j2]
+index.html: [skeleton/_root.j2, skeleton/_footer.j2, macros.j2, _splash.j2, skeleton/_base.j2]
+media/css/baseline.compress.css: []
+media/css/baseline.iphone.compress.css: []
+media/css/github.css: []
+media/css/site.css: []
+media/css/style.css: []
+pages/code-snippets.html: [_flatpage.j2, skeleton/_root.j2, skeleton/_footer.j2, macros.j2,
+  skeleton/_base.j2]
+pages/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_pagelisting.j2,
+  macros.j2, skeleton/_base.j2]
+pages/poetry/formidability.html: [_flatpage.j2, skeleton/_root.j2, skeleton/_footer.j2,
+  macros.j2, skeleton/_base.j2]
+pages/poetry/the-fortress.html: [_flatpage.j2, skeleton/_root.j2, skeleton/_footer.j2,
+  macros.j2, skeleton/_base.j2]
+projects/index.html: [skeleton/_root.j2, skeleton/_footer.j2, skeleton/_pagelisting.j2,
+  macros.j2, skeleton/_base.j2]
+projects/nethedz-org.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+projects/virtual-lab.html: [skeleton/_root.j2, skeleton/_disqus.j2, skeleton/_sidebar.j2,
+  skeleton/_base.j2, _post.j2, macros.j2, skeleton/_footer.j2]
+resume.html: [_flatpage.j2, skeleton/_root.j2, skeleton/_footer.j2, macros.j2, skeleton/_base.j2]

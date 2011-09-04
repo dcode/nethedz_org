@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ site.url }}/media/css/pygments-monokai-light.css" type="text/css" media="screen" charset="utf-8" />
 {% endblock %}
 
-{% block title %} {{ resource.meta.title|typogrify }} | {{ super() }} {% endblock %}
+{% block title %} {{ resource.meta.title|safe|typogrify }} | {{ super() }} {% endblock %}
 
 
 {% block content %}
@@ -14,7 +14,7 @@
             <header>
                 <h1>
                     <a href="{{ resource.meta.url }}">
-                        {{ resource.meta.title|typogrify }}
+                        {{ resource.meta.title|safe|typogrify }}
                     </a>
                 </h1>
                 <p>
