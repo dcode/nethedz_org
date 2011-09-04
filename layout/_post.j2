@@ -1,0 +1,66 @@
+{% extends "skeleton/_base.j2" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ site.url }}/media/css/pygments-monokai-light.css" type="text/css" media="screen" charset="utf-8" />
+{% endblock %}
+
+{% block title %} {{ resource.meta.title|typogrify }} | {{ super() }} {% endblock %}
+
+
+{% block content %}
+    <section class="width4">
+        <article class="blogPost">
+            {% filter typogrify %}
+            <header>
+                <h1>
+                    <a href="{{ resource.meta.url }}">
+                        {{ resource.meta.title|typogrify }}
+                    </a>
+                </h1>
+                <p>
+                    Created 
+                    <time class="timeago"
+                          datetime="{{ resource.meta.created|xmldatetime }}" 
+                          pubdate >
+                    </time>
+                    on {{ resource.meta.created|date_format("%B %d, %Y") }}.
+                </p>
+                {#<p>
+                    {% if resource.meta.created < resource.meta.updated %}
+                    Updated 
+                    <time class="timeago"
+                          datetime="{{ resource.meta.updated|xmldatetime }}" 
+                          pubdate >
+                    </time>
+                    on {{ resource.meta.updated|date_format("%B %d, %Y") }}.
+
+                    {% endif %}
+                </p> #}
+            </header>
+            <section class="column first width3">
+            {% markdown %}
+                {% block article %}{% endblock %}
+            {% endmarkdown %}
+            {% endfilter %}
+            </section>
+
+            <aside id="sidebar" class="column width1">
+                {% block sidebar %}
+                {% include "skeleton/_sidebar.j2" %}
+                {% endblock %}
+            </aside>
+ 
+        </article>
+        
+        {% if not resource.meta.no_comments %}
+        {% include "skeleton/_disqus.j2" %}
+        {% else %}
+        <section id="comments" class="column first width3 stroke">
+            <div class="admonition note">
+                <p>Comments have been disabled.</p>
+            </div>
+        </section>
+
+        {% endif %}
+    </section>
+{% endblock %}

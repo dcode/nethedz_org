@@ -1,0 +1,112 @@
+mode: learning
+media_root: media # Relative path from content folder
+media_url: /media # URL where media files are served from
+
+template: hyde.ext.templates.jinja.Jinja2Template
+plugins:
+    - hyde.ext.plugins.meta.MetaPlugin
+    - hyde.ext.plugins.auto_extend.AutoExtendPlugin
+    - hyde.ext.plugins.sorter.SorterPlugin
+    - hyde.ext.plugins.tagger.TaggerPlugin
+    - hyde.ext.plugins.grouper.GrouperPlugin
+markdown:
+    extensions:
+        - codehilite
+
+publisher:
+    nethedz:
+        type: hyde.ext.publishers.pyfs.PyFS
+        url: sftp://nethedz@nethedz.org/home/nethedz/staging/nethedz_org/html
+
+
+context:
+    data:
+        author:
+            name: Derek Ditch
+            url: "http://nethedz.org"
+        layout:
+            name: Hyde Starter Kit
+            url: "https://github.com/merlinrebrovic/hyde-starter-kit"
+        project:
+            name: Hyde
+            url: "http://hyde.github.com"
+            install: "http://hyde.github.com/install.html"
+        menu:
+          -
+            name: Home
+            description: Home Page
+            css_class: home
+            type: page
+            url: /
+          -
+            name: Blog
+            description: Periodic Web Log
+            css_class: blog
+            type: node
+            url: blog
+          -
+            name: Pages
+            description: Static Pages
+            css_class: pages
+            type: node
+            url: pages
+          -
+            name: Projects
+            description: My Personal Projects
+            css_class: projects
+            type: node
+            url: projects
+
+### Advanced part ###
+
+# This defines meta data on the whole site.
+meta:
+    # 'nodemeta' will tell Hyde what file to look for inside a folder from
+    # which to apply meta data to all files (resources) inside it. This is
+    # a great way of simply adding or modifying properties of a very large
+    # number of files.
+    nodemeta: meta.yaml
+    site_title: Digital Divagation
+    ga_tracking_code: UA-7697674-1
+    created: !!timestamp 2000-01-01 00:00:00
+
+sorter:
+    time:
+        attr:
+            - meta.created
+        reverse: True
+        filters:
+            source_file.kind: html
+            meta.listable: True
+
+tagger:
+    sorter: time
+    archives:
+        blog:
+            source: blog
+            target: blog/tags
+            template: _tagged_posts.j2
+            archive_extension: html
+
+grouper:
+    type:
+        sorter: name
+        description: Page Types
+        groups:
+            - name: misc
+              description: A hodge-podge of bits
+            - name: literature
+              description: Poetry and Writings
+            - name: papers
+              description: Papers that I have written and/or published
+    # You can have more than one group section, depending on your needs.
+    # For example: "categories", "menu sections", etc.
+    #category:
+    #    description: To which category a blog post belongs to.
+    #    groups:
+    #        - name: software
+    #          description: Software engineering
+    #        - name: web
+    #          description: Web technologies
+    #        - name: seo
+    #          description: Search Engine Optimization

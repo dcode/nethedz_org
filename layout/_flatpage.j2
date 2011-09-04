@@ -1,0 +1,18 @@
+{% extends "skeleton/_base.j2" %}
+
+{% block title %}{{ page.title|safe|typogrify }} | {{ super() }}{% endblock %}
+
+{% block content %}
+    <section>
+        <header>
+            <h1>{{ page.title|safe|typogrify }}</h1>
+        </header>
+		<div>
+            {% filter typogrify %}
+                {% markdown %}
+                    {% block article %}{% endblock %}
+                {% endmarkdown %}
+            {% endfilter %}
+        </div>
+    </section>
+{% endblock %}

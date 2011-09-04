@@ -1,0 +1,41 @@
+{% extends "skeleton/_base.j2"%}
+
+{% block title %}{{ resource.meta.title }} | {{ super() }}{% endblock %}
+
+{% block content -%}
+    <section class="column first width4">
+	{% for res in resource.node.walk_resources_sorted_by_time() %}
+        {% set year = res.meta.created|date_format("%Y") %}
+	<!-- res: {{ res }} -->
+        {% if loop.first %}
+            {% set prev_year = year %}
+    <h2>{{ year }}</h2>
+    <div class="">
+        <ol class="group">
+        {% endif %}
+
+        {% if prev_year != year %}
+        </ol>
+    </div>
+    <br style="clear: both" />
+    <h2>{{ year }}</h2>
+    <div class="">
+        <ol class="group">
+        {% endif %}
+            <li>
+            <!-- res.meta {{ res.meta }} -->
+                <a href="{{ content_url(res.url) }}">
+                    {{ res.meta.title|typogrify }}
+                </a>
+                <span class="snip">{{ res.meta.snip|typogrify }}</span>
+            </li>
+        {% if loop.last %}
+        </ol>
+    </div>
+        {% endif %}
+        {% set prev_year = year %}
+    {% endfor %}
+        </section>
+{%- endblock %}
+
+

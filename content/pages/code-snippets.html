@@ -1,0 +1,22 @@
+---
+title: "Code Snippets"
+snip: "Just some code lying around"
+created: 2011-07-23 08:57:53
+related: None
+no_comments: False
+type: misc
+---
+
+{% extends "_flatpage.j2" %}{#_#}
+
+{% block article %}
+
+Changes Jinja templates to point to .j2 files instead of .html files and
+converts old-style Hyde YAML header blocks to new-style:
+
+    :::bash
+    find . -type f -name "*.html" -exec sed -i bak -e 's/extends
+    \"\(.*\)\.html/extends \"\1.j2/; s/^{{ '{%' }} hyde/---/;s/^{{ '%}'}}$/---/' {} \;
+
+{% endblock %}
+

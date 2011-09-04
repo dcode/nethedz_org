@@ -1,0 +1,147 @@
+{% extends "skeleton/_root.j2" %}
+{% block all %}
+<html lang="en" class="no-js">
+    <!-- "no-js" class if for Modernizer. -->
+    <head>
+        {% block meta %}
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
+        <!-- This prevents the conditional comments below from holding up the page load
+        www.phpied.com/conditional-comments-block-downloads/ -->
+        <!--[if IE]><![endif-->
+
+        <title>{% block title %}NetHedz{% endblock %}</title>
+
+        <meta name="author" content="Derek Ditch" />
+        <meta name="copyright" content="Copyright Derek Ditch 2011. All Rights Reserved." />
+
+        <meta name="google-site-verification" content="IV0L4u8m6vYjzBEwvg5v1m71NqiRSL-qzHSB3ekOmdU" /> 
+        
+        {% block extra_meta %}{% endblock %}
+        {% endblock %}
+        
+
+        
+        <!-- OpenID Support -->
+        <link rel="openid2.provider" href="https://www.google.com/accounts/o8/id" /> 
+        <link rel="openid2.local_id" href="http://www.google.com/profiles/derek.ditch" />
+        
+        {% block feeds %}
+        <link href="{{ site.full_url('/feed/') }}" rel="alternate" title="{{ site.meta.site_title }} ATOM Feed" type="application/atom+xml" />
+        {% endblock %}
+
+        {% block css %}
+        <!-- Google Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Molengo:regular" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Sans:regular,bold" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:regular" />
+
+        <link rel="stylesheet" href="{{ media_url('css/baseline.compress.css') }}" media="screen" />
+        <link rel="stylesheet" href="{{ media_url('css/baseline.compress.iphone.css')}} " media="handheld" />
+
+        <link rel="stylesheet" href="{{ media_url('css/site.css') }}" />
+        <!-- codehilite -->
+        <link rel="stylesheet" href="{{ media_url('css/github.css') }}" />
+
+        {% block extra_css %}{% endblock %}
+        {% endblock %}
+
+        <!-- Modernizr for feature detection of CSS3 and HTML5; must be placed in the "head" -->
+        <!-- Script tag no longer needs type attribute -->
+        <script src="{{ media_url('js/modernizr-1.6.min.js') }}"></script>
+
+        <!-- MathJax library for converting equations into rendered form -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX","output/HTML-CSS"],
+                tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+            });
+        </script>
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+
+
+    </head>
+    <body class="page-grid">
+        <div id="page">
+            <div class="skipto"> 
+                <a href="#content">Skip to content</a> <span class="slash">/</span> 
+                <a href="#main-menu">Skip to content navigation</a> 
+            </div>
+
+            <!-- Main nav, styled by targeting "#hd1 nav"; you can have more than one nav element per page -->
+            <header role="banner" id="branding">    
+                <div id="banner" class="logo">           
+                    <hgroup>
+                    <h1><a href="{{ site.full_url('') }}" title="" rel="home">{{ site.meta.site_title }}</a></h1> 
+                    <h2>CODER // RUNNER // FATHER // SUPERHERO</h2>
+                    </hgroup>
+                </div>
+
+                {% from "macros.j2" import render_nav with context %}
+                {{ render_nav(menu, cls='full', id='main-menu') }}
+
+            </header>
+
+            <div id="content" class="width4 layout-grid">
+                <!-- Content -->
+                {% with parent_node = page.node.ancestors -%}
+                {%- with parent_url = parent_node.url -%}
+                {%- block admonition %}{% endblock -%}
+                {% block content %}{% endblock %}
+                {%- endwith -%}
+                {%- endwith %}
+           </div><!-- #content -->
+       </div><!-- #page -->
+       <footer class="full clear">
+           {% include "skeleton/_footer.j2" %}
+       </footer><!-- #footer -->
+
+
+        {% block js %}
+        <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+        <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
+        <script src="{{ media_url('js/jquery.timeago.js') }}" type="text/javascript"></script>
+        <script src="{{ media_url('js/jquery.jtweetsanywhere.min.js') }}" type="text/javascript"></script>
+        <script src="{{ media_url('js/site.js') }}" type="text/javascript"></script>
+        <script src="{{ media_url('js/print.js') }}" type="text/javascript"></script>
+
+        <script type="text/javascript"><!-- Google Analytics -->
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{{resource.meta.ga_tracking_code}}']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+        <!-- Start Open Web Analytics Tracker -->
+        <script type="text/javascript">
+            //<![CDATA[
+            var owa_baseUrl = 'http://owa.nethedz.org/';
+            var owa_cmds = owa_cmds || [];
+            owa_cmds.push(['setSiteId',
+            'ef4c9da6358a8d754c40fb2b32e3f5d8']);
+            owa_cmds.push(['trackPageView']);
+            owa_cmds.push(['trackClicks']);
+            owa_cmds.push(['trackDomStream']);
+
+            (function() {
+                 var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true; 
+                 owa_baseUrl = ('https:' == document.location.protocol ?  window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl ); 
+                 _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+                 var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s); 
+            }());
+            //]]>
+            </script>
+        <!-- End Open Web Analytics Code -->
+        
+        {% block extra_js %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>
+{% endblock %}

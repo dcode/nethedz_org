@@ -1,13 +1,12 @@
-{% extends "_post.html" %}{#_#}
-
-{% hyde
-    title: "Upgraded Hyde"
-    snip: "An Unexpected Nudge"
-    created: 2011-04-13 09:46:05
-    related: None
-    no_comments: False
-    exclude: False
-%}
+---
+title: "Upgraded Hyde"
+snip: "An Unexpected Nudge"
+created: 2011-04-13 09:46:05
+updated: 2011-08-07 06:18:42
+related: None
+no_comments: False
+---
+{% extends "_post.j2" %}{#_#}
 
 {% block article %}
 Today I tried to add some content. In doing so, I wanted to upgrade Fabric to
@@ -27,6 +26,12 @@ and less bloat since I don't need the whole Django ORM.
 **EDIT**: As it turns out, this was a beast to do, so it's getting shelved and I
 will revert to a virtualenv that I have on another machine until I can sort this
 out. \**grumble grumble*\*
+
+**UPDATE** (2011 AUG 07): I _finally_ got this site ported over to the new Hyde.
+Some functionality has been removed from the new hyde, so I had to jump through
+plenty of hoops to get it to work. Most everything is back as it was. I had some
+new functionality like post tagging and categories working, but it broke other
+things, so I'll have to revisit that.
 
 {% endblock %}
 

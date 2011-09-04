@@ -1,0 +1,24 @@
+{% extends "skeleton/_base.j2"%}
+
+{% block title %}{{ resource.meta.title }} | {{ super() }}{% endblock %}
+
+{% block content %}
+    <section class="column first width4">
+    <h2>{{ resource.node.source_folder.name|title }}</h2>
+    <ol class="group width3 clear">
+    {% for res in resource.node.walk_resources() %}
+        {% if res.meta.listable == false or res.source.kind != "html" %}
+            {% continue %}
+        {% endif %}
+        <li>
+            <a href="{{ content_url(res.url) }}">
+                {{ res.meta.title }}
+            </a>
+            <span class="snip">{{ res.meta.snip }}</span>
+        </li>
+        {% endfor %}
+    </ol>
+    </section>
+{% endblock %}
+
+

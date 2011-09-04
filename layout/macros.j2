@@ -1,0 +1,29 @@
+{% macro render_nav(menu, cls=None, id=None) -%}
+    {%- if menu %}
+
+    <nav {{'id='~id if id }} {{'class='~cls if cls }}>
+        <ul>
+            {% for item in menu -%}
+            {%- set selected = False -%}
+            {%- if item.type == 'page' -%}
+                {%- set selected = (resource.url ==
+                    site.content.resource_from_relative_path(item.url).url) -%}
+            {%- else -%}
+                {%- set selected = (node ==
+                    site.content.node_from_relative_path(item.url)) -%}
+            {%- endif -%}
+            {%- set classes = [ ] -%}
+            {%- do classes.append(item.css_class) if item.css_class -%}
+            <li {{ 'class="selected"' if selected }}>
+                <a title="{{ item.description }}"
+                    class="{{ classes|join(' ') }}"
+                    href="{{ content_url(item.url) }}">
+                    {{ item.name }}
+                </a>
+            </li>
+            {% endfor -%}
+        <!-- End Menu -->
+        </ul>
+    </nav>
+    {%- endif %}
+{%- endmacro %}

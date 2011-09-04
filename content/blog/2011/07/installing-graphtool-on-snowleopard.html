@@ -1,0 +1,140 @@
+---
+title: "Installing graph-tool On Snow Leopard"
+snip: "Scientific computing on a Mac"
+created: 2011-07-24 18:43:30
+related: migratory-swallows, back-to-the-basics
+no_comments: False
+listable: True
+---
+
+{% extends "_post.j2" %}{#_#}
+
+{% block article %}
+
+I've recently started digging back into my research after taking about a year's
+hiatus. Much of my research is concerned with Cyber-Physical Systems, which can
+be often modelled as graphs or multi-graphs.
+
+In the past, I've used Matlab and built an adjacency matrix to model my graphs,
+however it's high-time that I kick the expensive software suites and up my
+productivity by using a more general purpose language. This will enable me to
+build custom GUIs, interact with the actual software tools that I use in
+application of my work, and I don't have to worry about licensing.
+
+Graph Tool
+-----------------
+So, right before my break, I took a course in Internet data
+searching...something or other. My semester project for that class involved the
+creation of a system that would allow multi-level graph searching. Think Google
+with type specific queries. I used [IMDB][imdb] as my data set and a
+[Python][python] library called [graph-tool][] for storing the data. The gist of
+the project would allow you to perform searches such as "a film or play in the
+90s that contained an actor (or actress) that also appeared in the movie Star 
+Wars: A New Hope". There's very specific type information in that query that you
+cannot achieve by simply submitting a keyword search.
+
+The long and short of it is that I used graph-tool to store and process this
+data. `graph-tool` is basically a Python wrapper around the [Boost Graph
+Library][bgl] (BGL) that implements some additional algorithms and interfaces with
+other tools. Why this is so nice is that Boost libraries are written in C++,
+which is both fast and familiar to me. The BGL is well-known in the scientific
+and mathematic community for it's performance and completeness. Since I am also
+quite fond of Python for rapid development and overall scripting and glue code,
+graph-tool is seemingly a good choice for me. There are certainly other
+noteworthy Python graph libraries out there, but this post isn't about them.
+I've used NetworkX, igraph, and a few others. `graph-tool` is my choice.
+
+How to Install on Mac OS X 10.6
+---------------------------------
+Day to day I use a newer (not the newest) MacBook Pro. As such, I needed to
+install graph-tool on Mac OS X. I also have a laptop running Fedora 15, but
+installing this on that platform is quite trivial.
+
+For many open-source tools I've come to like the [Homebrew][brew] tool. It has a
+fun name and it also keeps things cleanly separated from the OS. It's also quite
+active. Go to the project page and find how easy it is to install.
+
+`graph-tool` has the following pre-requisites:
+
+ - GCC 4.2 or above (install the Mac OS X Developer Tools)
+ - boost 1.42 or above (`sudo brew install boost` will install 1.46.1 as of
+ today)
+ - Python 2.5 or above (2.6 is built-in)
+ - expat library (built-in)
+ - SciPy (I installed numpy first, then `pip install scipy`)
+ - numpy (`pip install numpy`)
+ - CGal 5 or above - I'm not really sure about this since the latest version is
+ 3.8 (`brew install cgal` - make sure you install boost first)
+ - graphviz (`brew install graphviz`)
+
+*NOTE:* before installing any Python modules I _highly_ suggest using
+virtualenv. I covered this in a [previous post][virtualenv], please go read to
+learn more. It will save you some hair pulling.
+
+I created a brew recipe for this by doing the following (or just download it
+from link below)
+
+    :::bash
+    sudo brew create http://downloads.skewed.de/graph-tool/graph-tool-2.2.14.tar.bz2
+    sudo brew edit graph-tool
+
+Make it match the following:
+
+    :::ruby
+    require 'formula'
+    
+    class GraphTool < Formula
+      url 'http://downloads.skewed.de/graph-tool/graph-tool-2.2.14.tar.bz2'
+      homepage 'http://projects.skewed.de/graph-tool/'
+      md5 '13b8738a66cdd9e027e38a45b4123da8'
+
+      depends_on 'boost'
+      depends_on 'scipy' => :python
+      depends_on 'numpy' => :python
+      depends_on 'cgal'
+
+      def install
+        system "./configure", "--disable-debug", "--disable-dependency-tracking",
+                              "--prefix=#{prefix}"
+        # system "cmake . #{std_cmake_parameters}"
+        system "make install"
+      end
+    end
+
+
+Then you can just do `sudo brew install graph-tool`. Now is a good time to take
+a nap, go for a walk, drink a beer, etc. Graph Tool authors explicitly state on
+the project homepage that since this uses C++ templates, there is *A LOT* of
+overhead on the compilation. It may take upto 1GB of RAM to compile this. The
+final product is quite optimized and only takes about about 20MB of hard drive
+space. If you need to tune this to use less RAM, check out the options on their
+website.
+
+For reference, my compilation on my MacBook Pro with 2.66 GHz Core i7 and 8GB of
+RAM took 5 hours and 59.5 minutes. Ouch.
+
+Finish Up
+--------------
+Well, that's it. `graph-tool` is now installed and is ready to use. Go ahead and
+head on over to the [graph-tool][] website and read the tutorials, examples, and
+quick start. You can start toying by firing up `ipython` and running
+
+    :::python
+    from graph_tool.all import *
+    
+    g = Graph()
+    v1 = g.add_vertex()
+    v2 = g.add_vertex()
+    e = g.add_edge(v1, v2)
+    graph_draw(g, vprops={"label": g.vertex_index}, output="two-nodes.png")
+
+
+[imdb]: http://www.imdb.org "The Internet Movie Database"
+[Python]: http://python.org "The Python Programming Language"
+[graph-tool]: http://projects.skewed.de/graph-tool/ "graph-tool"
+[bgl]: http://www.boost.org/doc/libs/release/libs/graph/ "Boost Graph Library"
+[brew]: http://mxcl.github.com/homebrew/
+[virtualenv]: http://nethedz.org/blog/2011/03/python-automation/
+
+{% endblock %}
+

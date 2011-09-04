@@ -1,0 +1,69 @@
+{% extends "_post.j2" %}{#_#}
+
+---
+    title: "Cyber Strategy And Tactics"
+    snip: "Ramblings about developing a cyber defense team."
+    created: 2011-08-27 13:45:53
+    no_comments: False
+    exclude: True
+---
+
+{% block article %}
+A problem that is faced today by the United States, and almost every other world
+power is how to defend in the new age of information superiority as it relates
+to military conflict, in particular. How does a nation define an information
+operation as a military act and more importantly, how do you methodically defend
+against such attacks, disruptions, and infiltrations?
+
+I've been reading a recent publication titled "[Cyber Infrastructure
+Protection][CIP]", published by the Strategic Studies Institute. It describes
+cyber infrastructure using the operational model of tactics, operations, and
+strategy. The authors define the base level as cyberspace. Layered on top of
+cyberspace for operations is cyberpower. Layered on top of cyberpower is
+cyberstrategy. 
+
+The gist for those readers without a military background is basically cyberspace
+is the tactical realm, where individuals or teams conduct some sort of action,
+whether it be defensive, offensive, or just everyday business and commerce.
+Cyberpower is the collection of these tactical actions that work towards some
+operational goal. That goal something specific like remove and prevent access to
+all hactivist groups. The cyberstrategy level is a big-picture type of concept
+that is supported by one or more operations by exhibiting cyberpower. Note that
+this is merely my interpretation and not specific definitions from the book.
+
+Moving along...
+
+I often like to take current problems and attepmt to map previously learned
+techniques, tactics, and procedures (TTPs) with a slight modification in
+implementation. In this way, it allows me to continue to think in a familiar
+way, but apply it to a new problem.
+
+For this problem, it seems defense is conceptually the same as in other tactical
+scenarios. Specifically, you set a perimeter defense and scan your sector, which
+overlaps with your buddy's sector and watch for anything out of the ordinary.
+While I've actually implemented this without thinking about it, it was difficult
+for me to describe how to effectively defend against attack.
+
+Obviously we're not setup in a 360-degree perimter with overlapping sectors of
+fire, because we are operating in cyberspace. Therefore, we have to have a
+cyber-360, so to speak. On my team, we all have the same basic skills and
+cross-train and share knowledge. However, there are those of us who are more
+interested and knowledgable in firewalls, for instance. Or Windows servers, or
+UNIX boxes. Having some sort of heads-up display monitoring these systems and
+their connections to the outside world provides that 360 perimeter. These
+sectors overlap implicitly due to the inherent nature of the OSI model.
+Odd network connections to the Exchange server can be seen from the firewall and
+switch levels, as well.
+
+This is where team tactics come in. What has made my team successful in
+exercises in the past has been that we understand these overlaps and implicitly
+share that information to the corresponding systems and team members.
+
+Has anyone read or seen these team-level tactics used in cyber defense? If so,
+could you give me a link to read more?
+
+That's all for now.
+
+[CIP]: http://www.strategicstudiesinstitute.army.mil/pubs/display.cfm?pubid=1067
+{% endblock %}
+

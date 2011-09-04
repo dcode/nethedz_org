@@ -1,0 +1,2 @@
+listable: True
+extends: skeleton/_post.j2
